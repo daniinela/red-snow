@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c7vascrrpwycj"]
+
+[ext_resource type="Script" uid="uid://24pat0cj3usf" path="res://view/menus/slots_select.gd" id="1_qcmr6"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1566567488]
+script = ExtResource("1_qcmr6")
+
+[node name="Label" type="Label" parent="." unique_id=898775472]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "SELECCIONAR PARTIDA"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1161438972]
+offset_right = 59.0
+offset_bottom = 101.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2137761003]
+layout_mode = 2
+
+[node name="Slot1" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1378004557]
+layout_mode = 2
+
+[node name="Borrar1" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1145316933]
+layout_mode = 2
+text = "Borrar"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=274534354]
+layout_mode = 2
+
+[node name="Slot2" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=2030629132]
+layout_mode = 2
+
+[node name="Borrar2" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=676286675]
+layout_mode = 2
+text = "Borrar"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=1708674499]
+layout_mode = 2
+
+[node name="Slot3" type="Button" parent="VBoxContainer/HBoxContainer3" unique_id=1932424746]
+layout_mode = 2
+
+[node name="Borrar3" type="Button" parent="VBoxContainer/HBoxContainer3" unique_id=198502878]
+layout_mode = 2
+text = "Borrar"

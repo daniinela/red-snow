@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dckjbc3ge0h8d"]
+
+[ext_resource type="Script" uid="uid://bj6yhc5k5lk41" path="res://view/ui/hud.gd" id="1_q3l31"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1733126331]
+script = ExtResource("1_q3l31")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1017618125]
+offset_left = -107.0
+offset_top = 9.0
+offset_right = 219.0
+offset_bottom = 36.0
+value = 100.0
+
+[node name="MonedaContainer" type="HBoxContainer" parent="." unique_id=1625814550]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Moneda_Label" type="Label" parent="MonedaContainer" unique_id=250539634]
+layout_mode = 2
+text = "$"

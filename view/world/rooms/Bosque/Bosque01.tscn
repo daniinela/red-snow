@@ -1,0 +1,83 @@
+[gd_scene format=4 uid="uid://v3mom4spgubq"]
+
+[ext_resource type="PackedScene" uid="uid://dlu4ak4bs6sq8" path="res://view/world/room_base.tscn" id="1_ko08v"]
+[ext_resource type="Texture2D" uid="uid://cscl1svc83p8p" path="res://assets/sprites/environment/pixel_art_small (75).png" id="2_xyvh8"]
+[ext_resource type="Texture2D" uid="uid://bhrfafewsrxhc" path="res://assets/sprites/environment/pixel_art_small (77).png" id="3_3efdr"]
+[ext_resource type="Texture2D" uid="uid://cfixnpcnebmhw" path="res://assets/sprites/environment/sinsol.png" id="3_e2t4k"]
+[ext_resource type="Texture2D" uid="uid://d06qpoati2jfc" path="res://assets/sprites/environment/Proyecto nuevo (2) (1).png" id="4_e2t4k"]
+[ext_resource type="Texture2D" uid="uid://6pcx0ib7k18" path="res://assets/sprites/environment/Proyecto nuevo (5).png" id="5_xyvh8"]
+[ext_resource type="Texture2D" uid="uid://boulp0x4o12b0" path="res://assets/sprites/environment/media-bc00221c.png" id="6_3efdr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5hug6"]
+texture = ExtResource("4_e2t4k")
+texture_region_size = Vector2i(269, 186)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -78, -9, -48, 88, -47, 84, -76)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -78, -9, -48, 88, -47, 84, -76)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-44.289032, -72.634, -44.289032, -42.51747, 100.97897, -44.289032, 93.89273, -70.86244)
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3efdr"]
+texture = ExtResource("5_xyvh8")
+texture_region_size = Vector2i(645, 716)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2t4k"]
+texture = ExtResource("6_3efdr")
+texture_region_size = Vector2i(144, 80)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_f05f7"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_5hug6")
+sources/1 = SubResource("TileSetAtlasSource_3efdr")
+sources/2 = SubResource("TileSetAtlasSource_e2t4k")
+
+[node name="Bosque01" type="Node2D" unique_id=193715420]
+
+[node name="RoomBase" parent="." unique_id=1779632340 instance=ExtResource("1_ko08v")]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=641844138]
+scroll_scale = Vector2(0.5, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=685999575]
+offset_left = -664.0
+offset_top = -449.0
+offset_right = 1092.2751
+offset_bottom = 319.0
+scale = Vector2(1.235, 1.235)
+texture = ExtResource("2_xyvh8")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Parallax2D" unique_id=1566032677]
+offset_left = 1504.9999
+offset_top = -448.99997
+offset_right = 2870.0
+offset_bottom = 319.00003
+scale = Vector2(1.23, 1.23)
+texture = ExtResource("3_e2t4k")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1460944928]
+offset_left = -664.0
+offset_top = -397.0
+offset_right = 2017.5332
+offset_bottom = 203.0
+scale = Vector2(1.435, 1.435)
+texture = ExtResource("3_3efdr")
+stretch_mode = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1911860950]
+tile_map_data = PackedByteArray("AADp/xYAAAADAAAAAADy/xYAAAADAAAAAAD6/xYAAAADAAAAAAADABYAAAADAAAAAAAMABYAAAADAAAAAAAVABYAAAADAAAAAAAeABYAAAADAAAAAAAnABYAAAADAAAAAAAwABYAAAADAAAAAABDAAkAAAACAAAAAAA7AAkAAAABAAAAAAA5ABYAAAADAAAAAABCABYAAAADAAAAAABLABYAAAADAAAAAABUABYAAAADAAAAAABcABYAAAADAAAAAADq/xoAAgAAAAAAAADz/xoAAgAAAAAAAAD8/xoAAgAAAAAAAAAFABoAAgAAAAAAAAAOABoAAgAAAAAAAAAXABoAAgAAAAAAAAAgABoAAgAAAAAAAAApABoAAgAAAAAAAAAyABoAAgAAAAAAAAA7ABoAAgAAAAAAAABEABoAAgAAAAAAAABNABoAAgAAAAAAAABWABoAAgAAAAAAAABfABoAAgAAAAAAAADg/xYAAAADAAAAAADX/xYAAAADAAAAAADh/xoAAgAAAAAAAADY/xoAAgAAAAAAAABlABYAAAADAAAAAABuABYAAAADAAAAAABnABoAAgAAAAAAAABwABoAAgAAAAAAAAAlABAAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_f05f7")

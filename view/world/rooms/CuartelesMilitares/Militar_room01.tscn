@@ -1,0 +1,107 @@
+[gd_scene format=4 uid="uid://ch6s01k1y3nr6"]
+
+[ext_resource type="PackedScene" uid="uid://dlu4ak4bs6sq8" path="res://view/world/room_base.tscn" id="1_ouyhf"]
+[ext_resource type="Texture2D" uid="uid://cw73s18nxmi2d" path="res://assets/sprites/environment/07c0a9eb-cc44-4da1-bc96-141b1599a930.png" id="2_37fdm"]
+[ext_resource type="Texture2D" uid="uid://dvtcak4sct7cn" path="res://assets/sprites/environment/cuartelpuerta.png" id="4_prlu4"]
+[ext_resource type="Texture2D" uid="uid://cm3tvfo6aro7h" path="res://assets/sprites/environment/pixel_art_small (58).png" id="5_37fdm"]
+[ext_resource type="Texture2D" uid="uid://dirktauu5s063" path="res://assets/sprites/environment/pixel_art_small (62).png" id="5_ft0x0"]
+[ext_resource type="Texture2D" uid="uid://cngligbwksgy6" path="res://assets/sprites/environment/pixel_art_small (63).png" id="6_ft0x0"]
+[ext_resource type="Texture2D" uid="uid://c47s8deu1qjxn" path="res://assets/sprites/environment/pixel_art_small (66).png" id="6_x2l3q"]
+[ext_resource type="Texture2D" uid="uid://de5sgw3yjan7" path="res://assets/sprites/environment/suelossss.png" id="8_8i5ve"]
+[ext_resource type="Texture2D" uid="uid://cir3xj1psrk4s" path="res://assets/sprites/environment/decoracionesss.png" id="8_jkrpn"]
+[ext_resource type="Texture2D" uid="uid://m0uv45bd0iti" path="res://assets/sprites/environment/puerta.png" id="9_8i5ve"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_im6ld"]
+texture = ExtResource("4_prlu4")
+texture_region_size = Vector2i(700, 500)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-350, -249, -354, -271, -219, -275, -216, -249)
+2:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6s0ch"]
+texture = ExtResource("8_8i5ve")
+texture_region_size = Vector2i(300, 230)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x2l3q"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_im6ld")
+sources/2 = SubResource("TileSetAtlasSource_6s0ch")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vpage"]
+texture = ExtResource("8_jkrpn")
+texture_region_size = Vector2i(251, 187)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6s0ch"]
+sources/1 = SubResource("TileSetAtlasSource_vpage")
+
+[node name="MilitarRoom01" type="Node2D" unique_id=824878327]
+
+[node name="RoomBase" parent="." unique_id=1779632340 instance=ExtResource("1_ouyhf")]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=136175401]
+scroll_scale = Vector2(0.5, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=2132720127]
+offset_left = -434.0
+offset_top = -128.0
+offset_right = 3136.0
+offset_bottom = 305.0
+texture = ExtResource("2_37fdm")
+stretch_mode = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=796715988]
+position = Vector2(71, 110)
+scale = Vector2(0.85480976, 0.72209823)
+texture = ExtResource("5_37fdm")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=731019280]
+offset_left = -460.0
+offset_top = -133.00002
+offset_right = 3846.587
+offset_bottom = 416.45056
+scale = Vector2(0.835, 0.835)
+texture = ExtResource("5_ft0x0")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1677590008]
+offset_left = -563.0
+offset_top = -388.0
+offset_right = 3330.6843
+offset_bottom = -106.0
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("6_ft0x0")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=869109923]
+offset_left = -563.0
+offset_top = 392.0
+offset_right = 2317.0
+offset_bottom = 872.0
+texture = ExtResource("6_x2l3q")
+stretch_mode = 1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1870126822]
+tile_map_data = PackedByteArray("AAD1/yMAAAAAAAEAAAD8/yMAAAAAAAEAAAADACMAAAAAAAEAAAAKACMAAAAAAAEAAAARACMAAAAAAAEAAAAYACMAAAAAAAEAAAAfACMAAAAAAAEAAAAmACMAAAAAAAEAAAAtACMAAAAAAAEAAAA7ACMAAAAAAAEAAABCACMAAAAAAAEAAABIACMAAAAAAAEAAABPACMAAAAAAAEAAABWACMAAAAAAAEAAABdACMAAAAAAAEAAABkACMAAAAAAAEAAABrACMAAAAAAAEAAAByACMAAAAAAAEAAAB5ACMAAAAAAAEAAACAACMAAAAAAAEAAACHACMAAAAAAAEAAACgACMAAAAAAAEAAACnACMAAAAAAAEAAACuACMAAAAAAAEAAAC1ACMAAAAAAAEAAAC8ACMAAAAAAAEAAADDACMAAAAAAAEAAADKACMAAAAAAAEAAADNACMAAAAAAAEAAADSACMAAAAAAAEAAAA0ACMAAAAAAAEAAACcACMAAAAAAAEAAADy/0UAAAAAAAEAAAD5/0UAAAAAAAEAAAAAAEUAAAAAAAEAAAAIAEUAAAAAAAEAAAAPAEUAAAAAAAEAAAAWAEUAAAAAAAEAAAAdAEUAAAAAAAEAAAAlAEUAAAAAAAEAAAAtAEUAAAAAAAEAAAA1AEUAAAAAAAEAAAA8AEUAAAAAAAEAAABDAEUAAAAAAAEAAABKAEUAAAAAAAEAAABRAEUAAAAAAAEAAABYAEUAAAAAAAEAAABfAEUAAAAAAAEAAABmAEUAAAAAAAEAAABtAEUAAAAAAAEAAAB0AEUAAAAAAAEAAAB7AEUAAAAAAAEAAACCAEUAAAAAAAEAAACJAEUAAAAAAAEAAACQAEUAAAAAAAEAAACXAEUAAAAAAAEAAACeAEUAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_x2l3q")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1446599978]
+tile_map_data = PackedByteArray("AAAWADIAAQAAAAAAAAA2ADAAAQABAAAAAABrAC4AAQACAAAAAAAxAAMAAQACAAAAAAB8AAMAAQACAAAAAADn/y8AAQACAAAAAAA=")
+tile_set = SubResource("TileSet_6s0ch")
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1582907043]
+offset_left = -336.0
+offset_top = 424.0
+offset_right = 157.4426
+offset_bottom = 1101.0492
+scale = Vector2(0.61, 0.61)
+texture = ExtResource("9_8i5ve")

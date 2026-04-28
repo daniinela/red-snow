@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://phxeo2723p5f"]
+
+[ext_resource type="Script" uid="uid://by8deefd4yhso" path="res://view/world/items/item_pickup.gd" id="1_6v1tv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk5ia"]
+size = Vector2(141, 148)
+
+[node name="ItemPickup" type="Area2D" unique_id=296429572]
+collision_mask = 2
+script = ExtResource("1_6v1tv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1051683375]
+position = Vector2(60.5, 64)
+shape = SubResource("RectangleShape2D_nk5ia")

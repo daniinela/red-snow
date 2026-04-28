@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cgg47y5buqf3f"]
+
+[ext_resource type="Script" uid="uid://dc1eax8qoohsa" path="res://view/ui/death_screen.gd" id="1_0ij54"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=2132067144 groups=["spawn"]]
+script = ExtResource("1_0ij54")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1568316511]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.015686275, 0.101960786, 0.21960784, 0.95686275)
+
+[node name="Label" type="Label" parent="." unique_id=1370256135]
+offset_left = 484.0
+offset_top = 277.0
+offset_right = 662.0
+offset_bottom = 326.0
+text = "La nieve se tiñe de rojo
+"

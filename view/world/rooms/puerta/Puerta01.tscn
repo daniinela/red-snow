@@ -1,0 +1,51 @@
+[gd_scene format=4 uid="uid://coiv3aup3vogx"]
+
+[ext_resource type="PackedScene" uid="uid://dlu4ak4bs6sq8" path="res://view/world/room_base.tscn" id="1_boa51"]
+[ext_resource type="Texture2D" uid="uid://dvtcak4sct7cn" path="res://assets/sprites/environment/cuartelpuerta.png" id="2_pnc2j"]
+[ext_resource type="Texture2D" uid="uid://dj2w6km3l614p" path="res://assets/sprites/environment/entrada.png" id="3_pnc2j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uldio"]
+texture = ExtResource("2_pnc2j")
+texture_region_size = Vector2i(700, 500)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-350, -256, -349.9738, -245.54614, -219.01587, -244.98164, -220, -254)
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_avhpj"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_uldio")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1486b"]
+texture = ExtResource("2_pnc2j")
+texture_region_size = Vector2i(700, 500)
+1:0/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-225.9669, -59.630157, -15.692139, -260.48962, 163.1983, -251.07434, 166.33673, -34.522736)
+0:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nb6bv"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_1486b")
+
+[node name="Puerta01" type="Node2D" unique_id=1187457554]
+
+[node name="RoomBase" parent="." unique_id=1779632340 instance=ExtResource("1_boa51")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2141804475]
+tile_map_data = PackedByteArray("AAAMACEAAAAAAAEAAAATACEAAAAAAAEAAAAaACEAAAAAAAEAAAAhACEAAAAAAAEAAAAoACEAAAAAAAEAAAAvACEAAAAAAAEAAAA2ACEAAAAAAAEAAAA9ACEAAAAAAAEAAABEACEAAAAAAAEAAABLACEAAAAAAAEAAABSACEAAAAAAAEAAABZACEAAAAAAAEAAABgACEAAAAAAAEAAACDAB8AAAAAAAEAAAB8AB8AAAAAAAEAAAB1AB8AAAAAAAEAAABwAB8AAAAAAAEAAAAMABoAAAABAAEAAAAMABMAAAABAAEAAAAMAAwAAAABAAEAAAAVABoAAAABAAEAAAAVABMAAAABAAEAAAAVAAwAAAABAAEAAAAfABoAAAABAAEAAAAfABMAAAABAAEAAAAfAAwAAAABAAEAAAApABoAAAABAAEAAAApABMAAAABAAEAAAApAAwAAAABAAEAAAAzABoAAAABAAEAAAAzABMAAAABAAEAAAAzAAwAAAABAAEAAAA9ABoAAAABAAEAAAA9ABMAAAABAAEAAAA9AAwAAAABAAEAAABHABoAAAABAAEAAABHABMAAAABAAEAAABHAAwAAAABAAEAAABRABoAAAABAAEAAABRABMAAAABAAEAAABRAAwAAAABAAEAAABbABoAAAABAAEAAABbABMAAAABAAEAAABbAAwAAAABAAEAAABlABoAAAABAAEAAABlABMAAAABAAEAAABlAAwAAAABAAEAAABrABoAAAABAAEAAABrABMAAAABAAEAAABsAAwAAAABAAEAAABnACEAAAAAAAEAAACDACEAAAAAAAEAAAB8ACEAAAAAAAEAAAB1ACEAAAAAAAEAAABuACEAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_avhpj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1394826574]
+position = Vector2(1632, -25)
+texture = ExtResource("3_pnc2j")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=787500308]
+tile_map_data = PackedByteArray("AAAnABQAAAAAAAAAAABPABUAAAABAAAAAABvABcAAAACAAEAAAA=")
+tile_set = SubResource("TileSet_nb6bv")
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=29752169]
+tile_map_data = PackedByteArray("AAAnABQAAAAAAAAAAABPABUAAAABAAAAAABvABcAAAACAAEAAAA=")
+tile_set = SubResource("TileSet_nb6bv")

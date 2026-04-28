@@ -1,0 +1,67 @@
+[gd_scene format=4 uid="uid://25pibd6h3i8d"]
+
+[ext_resource type="Script" uid="uid://i45dlcms8flf" path="res://view/world/room_base.gd" id="1_46arq"]
+[ext_resource type="PackedScene" uid="uid://dlu4ak4bs6sq8" path="res://view/world/room_base.tscn" id="1_y4fec"]
+[ext_resource type="Texture2D" uid="uid://b86mr2gyx2jag" path="res://assets/sprites/environment/files.png" id="2_46arq"]
+[ext_resource type="PackedScene" uid="uid://bi67ivhh35v4n" path="res://view/enemies/enemy_base.tscn" id="3_od7x6"]
+[ext_resource type="PackedScene" uid="uid://itauy4h7vhnu" path="res://view/world/checkpoint.tscn" id="4_xlg6k"]
+[ext_resource type="PackedScene" uid="uid://b3axmgst2xpgx" path="res://view/world/door/door.tscn" id="5_2qair"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_46arq"]
+texture = ExtResource("2_46arq")
+texture_region_size = Vector2i(256, 400)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-130, -203, -129, -174, 103, -174, 103, -205)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-130, -203, -129, -174, 103, -174, 103, -205)
+0:1/0 = 0
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-133, -203, -131, -171, 81, -171, 78, -202)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-133, -203, -131, -171, 81, -171, 78, -202)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-133, -203, -131, -171, 81, -171, 78, -202)
+3:0/0 = 0
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-130, -203, -129, -174, 103, -174, 103, -205)
+2:1/0 = 0
+1:1/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-133, -203, -131, -171, 81, -171, 78, -202)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-133, -203, -131, -171, 81, -171, 78, -202)
+1:3/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-133, -203, -131, -171, 81, -171, 78, -202)
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qpww5"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/1 = SubResource("TileSetAtlasSource_46arq")
+
+[node name="Room02" type="Node2D" unique_id=992225546 groups=["room"]]
+script = ExtResource("1_46arq")
+room_id = "room_02"
+
+[node name="RoomBase" parent="." unique_id=1779632340 instance=ExtResource("1_y4fec")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1957203318]
+tile_map_data = PackedByteArray("AAD+/xEAAQAAAAIAAAAMABEAAQAAAAIAAAAZABEAAQAAAAIAAAAnABEAAQAAAAIAAAAzABEAAQAAAAIAAABBABEAAQAAAAIAAABPABEAAQAAAAIAAABcABEAAQADAAEAAADw/xEAAQAAAAIAAADi/xEAAQAAAAIAAADU/xEAAQABAAIAAAA=")
+tile_set = SubResource("TileSet_qpww5")
+
+[node name="EnemyBase" parent="." unique_id=1410596035 instance=ExtResource("3_od7x6")]
+position = Vector2(1051, 9)
+
+[node name="CheckPoint" parent="." unique_id=1920791638 instance=ExtResource("4_xlg6k")]
+
+[node name="Door" parent="." unique_id=1763464115 instance=ExtResource("5_2qair")]
+position = Vector2(-275, -4)
+door_id = "door_02_left"
+target_room = "room_01"
+target_door_id = "door_01"

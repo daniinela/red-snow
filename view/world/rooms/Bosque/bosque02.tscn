@@ -1,0 +1,85 @@
+[gd_scene format=4 uid="uid://b6a6gy2i3qlox"]
+
+[ext_resource type="Texture2D" uid="uid://bb21v7wc1hpoo" path="res://assets/sprites/environment/Gemini_Generated_Image_iniu7yiniu7yiniu (1).png" id="2_5wtlo"]
+[ext_resource type="PackedScene" uid="uid://dlu4ak4bs6sq8" path="res://view/world/room_base.tscn" id="2_naomj"]
+[ext_resource type="Texture2D" uid="uid://cn83s4upx7v6d" path="res://assets/sprites/environment/Gemini_Generated_Image_kmf3lokmf3lokmf3 (1).png" id="3_eeox5"]
+[ext_resource type="Texture2D" uid="uid://kvxjysjfxeim" path="res://assets/sprites/environment/arboless.png" id="3_qj3y5"]
+[ext_resource type="Texture2D" uid="uid://ckg3a4hsigoip" path="res://assets/sprites/environment/arbolcostado.png" id="5_cavl1"]
+[ext_resource type="Texture2D" uid="uid://bpjdq1hiu2anv" path="res://assets/sprites/environment/Gemini_Generated_Image_ukhbe8ukhbe8ukhb (1).png" id="6_gmils"]
+[ext_resource type="Texture2D" uid="uid://bkt4y3otxaojj" path="res://assets/sprites/environment/tilesBosque.png" id="7_m8tni"]
+[ext_resource type="PackedScene" uid="uid://bi67ivhh35v4n" path="res://view/enemies/enemy_base.tscn" id="8_eeox5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rty8h"]
+texture = ExtResource("7_m8tni")
+texture_region_size = Vector2i(522, 183)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-273.04333, -18.830597, -269.9049, -53.353302, 257.35117, -53.353302, 257.35117, -12.553741)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-246.24701, 24.80185, -244.47545, -15.944061, 258.64792, -23.030289, 265.73416, 24.80185)
+
+[sub_resource type="TileSet" id="TileSet_d5vtc"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_rty8h")
+
+[node name="Bosque02" type="Node2D" unique_id=575239870]
+
+[node name="RoomBase" parent="." unique_id=1779632340 instance=ExtResource("2_naomj")]
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=537862720]
+scroll_scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D2" unique_id=145291684]
+offset_left = -490.00006
+offset_top = -365.0
+offset_right = 4220.4
+offset_bottom = 315.0
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_5wtlo")
+stretch_mode = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=343500903]
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=372923264]
+offset_left = -490.0
+offset_top = -365.0
+offset_right = 4521.064
+offset_bottom = 403.0
+scale = Vector2(1.175, 1.175)
+texture = ExtResource("3_eeox5")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1904757094]
+offset_left = -490.0
+offset_top = -487.0
+offset_right = 3953.7734
+offset_bottom = 281.0
+scale = Vector2(1.325, 1.325)
+texture = ExtResource("3_qj3y5")
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1810683752]
+z_index = 1
+offset_left = -490.0
+offset_top = -584.0
+offset_right = 593.0
+offset_bottom = 952.0
+scale = Vector2(0.71, 0.71)
+texture = ExtResource("5_cavl1")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1046212709]
+z_index = 1
+offset_left = 1225.0
+offset_top = -583.99994
+offset_right = 2358.0
+offset_bottom = 952.00006
+scale = Vector2(0.715, 0.715)
+texture = ExtResource("6_gmils")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=78696760]
+tile_map_data = PackedByteArray("AADw/xIAAAACAAAAAAAQABQAAAABAAAAAAAvABQAAAABAAAAAABOABIAAAACAAAAAABtABIAAAACAAAAAADx/x0AAAAAAAAAAAARAB0AAAAAAAAAAAAxAB0AAAAAAAAAAABQAB0AAAAAAAAAAABwAB0AAAAAAAAAAACQAB0AAAAAAAAAAACNABQAAAABAAAAAACsABQAAAABAAAAAADLABQAAAABAAAAAADqABQAAAABAAAAAAAJARQAAAABAAAAAAAoARQAAAABAAAAAABHARQAAAABAAAAAACwAB0AAAAAAAAAAADPAB0AAAAAAAAAAADuAB0AAAAAAAAAAAAMAR0AAAAAAAAAAAArAR0AAAAAAAAAAABJAR0AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_d5vtc")
+
+[node name="EnemyBase" parent="." unique_id=1410596035 instance=ExtResource("8_eeox5")]
+position = Vector2(3643, 203)

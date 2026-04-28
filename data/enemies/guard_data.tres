@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://drftik7sxyu27"]
+
+[ext_resource type="Script" uid="uid://cljixhs4c2cgt" path="res://model/enemy_data.gd" id="1_2t0jq"]
+
+[resource]
+script = ExtResource("1_2t0jq")
+rango_ataque = 80.0
+metadata/_custom_type_script = "uid://cljixhs4c2cgt"

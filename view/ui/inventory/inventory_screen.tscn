@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bpqudhxtg7og"]
+
+[ext_resource type="Script" uid="uid://lvckx17wn4rt" path="res://view/ui/inventory/inventory_screen.gd" id="1_cio7n"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1453786267]
+script = ExtResource("1_cio7n")
+
+[node name="Panel" type="Panel" parent="." unique_id=208275573]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBox" type="HBoxContainer" parent="Panel" unique_id=2118105357]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Left" type="VBoxContainer" parent="Panel/HBox" unique_id=1765430931]
+layout_mode = 2
+
+[node name="Reliquias" type="Label" parent="Panel/HBox/Left" unique_id=1269982443]
+layout_mode = 2
+text = "Reliquias"
+
+[node name="RelicList" type="VBoxContainer" parent="Panel/HBox/Left" unique_id=1669242201]
+layout_mode = 2
+
+[node name="Slots equipados" type="Label" parent="Panel/HBox/Left" unique_id=791107133]
+layout_mode = 2
+text = "Slots equipados"
+
+[node name="Slots" type="HBoxContainer" parent="Panel/HBox/Left" unique_id=1525755942]
+layout_mode = 2
+
+[node name="Slot1" type="Button" parent="Panel/HBox/Left/Slots" unique_id=585529321]
+layout_mode = 2
+text = "Slot1"
+
+[node name="Slot2" type="Button" parent="Panel/HBox/Left/Slots" unique_id=1263500575]
+layout_mode = 2
+text = "Slot2"
+
+[node name="Slot3" type="Button" parent="Panel/HBox/Left/Slots" unique_id=2077835191]
+layout_mode = 2
+text = "Slot3"
+
+[node name="Right" type="VBoxContainer" parent="Panel/HBox" unique_id=920547831]
+layout_mode = 2
+
+[node name="Lore" type="Label" parent="Panel/HBox/Right" unique_id=1164532462]
+layout_mode = 2
+text = "Lore"
+
+[node name="LoreList" type="VBoxContainer" parent="Panel/HBox/Right" unique_id=1222684939]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="Panel/HBox/Right" unique_id=423039755]
+layout_mode = 2

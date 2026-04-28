@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://qgble7l3fljv"]
+
+[ext_resource type="Script" uid="uid://b6b708hxrtb4w" path="res://model/item_data.gd" id="1_ygxmh"]
+
+[resource]
+script = ExtResource("1_ygxmh")
+id = "pocion_01"
+name = "Pocion"
+type = 1
+heal_amount = 30
+metadata/_custom_type_script = "uid://b6b708hxrtb4w"

@@ -1,0 +1,71 @@
+[gd_scene format=4 uid="uid://hpc5jioe5imi"]
+
+[ext_resource type="PackedScene" uid="uid://dlu4ak4bs6sq8" path="res://view/world/room_base.tscn" id="1_on6r5"]
+[ext_resource type="PackedScene" uid="uid://itauy4h7vhnu" path="res://view/world/checkpoint.tscn" id="2_nhxpb"]
+[ext_resource type="Texture2D" uid="uid://72kvp4ynx8wn" path="res://assets/sprites/environment/Gemini_Generated_Image_fc9s33fc9s33fc9s.png" id="3_nkk82"]
+[ext_resource type="PackedScene" uid="uid://bi67ivhh35v4n" path="res://view/enemies/enemy_base.tscn" id="4_pejan"]
+[ext_resource type="Texture2D" uid="uid://dwfkcbj4wqqpl" path="res://assets/sprites/environment/plantas.png" id="5_e2myp"]
+[ext_resource type="Texture2D" uid="uid://dwrj7y2odv5qt" path="res://assets/sprites/environment/suelospuente.png" id="6_e2gtj"]
+[ext_resource type="Texture2D" uid="uid://cy0y0xmv4yfnv" path="res://assets/sprites/environment/Gemini_Generated_Image_561mwo561mwo561m (1).png" id="7_p2lsj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_imldj"]
+texture = ExtResource("6_e2gtj")
+texture_region_size = Vector2i(700, 500)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-352, -254, -352, -207, -186, -206, -184, -253)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-352, -254, -352, -207, -186, -206, -184, -253)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-352, -254, -352, -207, -186, -206, -184, -253)
+3:0/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ks2x2"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_imldj")
+
+[node name="MilitarRoom01" type="Node2D" unique_id=1313676286]
+
+[node name="RoomBase" parent="." unique_id=1779632340 instance=ExtResource("1_on6r5")]
+room_id = null
+
+[node name="CheckPoint" parent="." unique_id=1920791638 instance=ExtResource("2_nhxpb")]
+position = Vector2(-208, 0)
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=2081072641]
+scroll_scale = Vector2(0.2, 0)
+repeat_size = Vector2(1584, 0)
+repeat_times = 50
+limit_begin = Vector2(-100000, -100000)
+limit_end = Vector2(100000, 100000)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1299754198]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_nkk82")
+offset = Vector2(0, 300)
+
+[node name="EnemyBase" parent="." unique_id=1410596035 instance=ExtResource("4_pejan")]
+position = Vector2(1407, -24)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1053412029]
+z_index = 2
+position = Vector2(1979.1676, 36)
+scale = Vector2(0.6645042, 0.56608605)
+texture = ExtResource("5_e2myp")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=426663606]
+tile_map_data = PackedByteArray("AADe/yEAAAAAAAAAAADo/yEAAAAAAAAAAADr/yEAAAAAAAAAAADg/yMAAAADAAAAAAAGACMAAAADAAAAAADN/yMAAAADAAAAAAAZACMAAAADAAAAAAAsACMAAAADAAAAAAA/ACMAAAADAAAAAABSACMAAAADAAAAAABlACMAAAADAAAAAAB4ACMAAAADAAAAAACLACMAAAADAAAAAAD8/yEAAAAAAAAAAAAGACEAAAAAAAAAAAANACEAAAAAAAAAAAAeACEAAAAAAAAAAAAoACEAAAAAAAAAAAAvACEAAAAAAAAAAABAACEAAAAAAAAAAABKACEAAAAAAAAAAABQACEAAAAAAAAAAABgACEAAAAAAAAAAABqACEAAAAAAAAAAABvACEAAAAAAAAAAACAACEAAAAAAAAAAACKACEAAAAAAAAAAACUACEAAAAAAAAAAACbACEAAAAAAAAAAAD0/yEAAAAAAAAAAAAVACEAAAAAAAAAAAA4ACEAAAAAAAAAAABZACEAAAAAAAAAAAB2ACEAAAAAAAAAAADU/yEAAAAAAAAAAADK/yEAAAAAAAAAAADz/yMAAAADAAAAAAA=")
+tile_set = SubResource("TileSet_ks2x2")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2102727289]
+z_index = 1
+offset_left = -990.0
+offset_top = -239.0
+offset_right = 9010.0
+offset_bottom = 433.0
+texture = ExtResource("7_p2lsj")
+stretch_mode = 1
