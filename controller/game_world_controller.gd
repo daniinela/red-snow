@@ -11,11 +11,13 @@ extends Node
 
 var current_room_node: Node = null
 
+
 func _ready() -> void:
 	EventBus.room_transition_requested.connect(_on_transition_requested)
 	fade.color = Color(0, 0, 0, 1)
 	await get_tree().process_frame
 	_load_initial_room()
+
 
 func _load_initial_room() -> void:
 	var room_id = GameManager.world_state.current_room
@@ -24,7 +26,9 @@ func _load_initial_room() -> void:
 	_load_room(room_path)
 	await get_tree().process_frame
 	await get_tree().process_frame
-	# Nueva partida — posiciona en StartPoint
+	await get_tree().process_frame
+	await get_tree().process_frame
+
 	if GameManager.nueva_partida_mode:
 		var start = current_room_node.get_node_or_null("StartPoint")
 		if start:
@@ -32,7 +36,29 @@ func _load_initial_room() -> void:
 			if player:
 				player.global_position = start.global_position
 				player.velocity = Vector2.ZERO
+	else:
+		var slot = GameManager.current_slot
+		if slot > 0:
+			var data = SaveSystem._read_slot_raw(slot)
+			if not data.is_empty():
+				var player = get_tree().get_first_node_in_group("player")
+				if player:
+					var pos_x = data.get("checkpoint_pos_x", 0.0)
+					var pos_y = data.get("checkpoint_pos_y", 0.0)
+					if pos_x != 0.0 or pos_y != 0.0:
+						var pos = Vector2(pos_x, pos_y)
+						player.global_position = pos
+						player.velocity = Vector2.ZERO
+						player.set_meta("checkpoint_pos", pos)
+						print("[GameWorld] Checkpoint restaurado: ", pos)
+				# Esperar a que el tutorial haya corrido su _ready antes de restaurar
+				await get_tree().process_frame
+				await get_tree().process_frame
+				SaveSystem.apply_save_to_player(data)
+
 	await _fade_to_clear()
+	GameManager.change_state(GameManager.GameState.PLAYING)
+
 
 func _on_transition_requested(target_room: String, _door_id: String) -> void:
 	print("[GameWorld] Transicion solicitada a: ", target_room)
@@ -41,6 +67,7 @@ func _on_transition_requested(target_room: String, _door_id: String) -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await _fade_to_clear()
+	GameManager.change_state(GameManager.GameState.PLAYING)
 
 
 func _load_room(path: String) -> void:
@@ -54,12 +81,14 @@ func _load_room(path: String) -> void:
 	current_room_node = packed.instantiate()
 	room_container.add_child(current_room_node)
 
+
 func _get_room_path(room_id: String) -> String:
 	var map := {
 		"Bosque/bosque02": "res://view/world/rooms/Bosque/bosque02.tscn",
 		"Puente/PuenteSanPetersburgo": "res://view/world/rooms/Puente/PuenteSanPetersburgo.tscn",
 		"Castillo/Castillo_Boss": "res://view/world/rooms/Castillo/Castillo_Boss.tscn",
 		"CuartelesMilitares/Militar_room01": "res://view/world/rooms/CuartelesMilitares/Militar_room01.tscn",
+		"tigre/tigre_room": "res://view/world/rooms/tigre/tigre_room.tscn",
 		"puerta/Puerta01": "res://view/world/rooms/puerta/Puerta01.tscn",
 		"room_01": "res://view/world/rooms/room_01.tscn",
 		"room_02": "res://view/world/rooms/room_02.tscn",
@@ -68,10 +97,12 @@ func _get_room_path(room_id: String) -> String:
 		push_error("[GameWorld] room_id no encontrado en mapa: " + room_id)
 	return map.get(room_id, "res://view/world/rooms/Bosque/bosque02.tscn")
 
+
 func _fade_to_black() -> void:
 	var tw = create_tween()
 	tw.tween_property(fade, "color", Color(0, 0, 0, 1), 0.3)
 	await tw.finished
+
 
 func _fade_to_clear() -> void:
 	var tw = create_tween()

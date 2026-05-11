@@ -32,13 +32,12 @@ func _process(_delta: float) -> void:
 
 func _recoger() -> void:
 	GameManager.world_state.open_door(llave_id)
-	SaveSystem.save(GameManager.current_slot)
+	# NO llamar SaveSystem.save() aquí — solo actualizar world_state
+	# El guardado real ocurre en el checkpoint
 	
-	# Activa el sprite vacío que está en la sala directamente
 	var lugar = get_tree().get_first_node_in_group("lugar_sin_llave")
 	if lugar:
 		lugar.visible = true
-
 	var tw := create_tween()
 	tw.tween_property(sprite, "modulate:a", 0.0, 0.3)
 	tw.tween_property(indicador_e, "modulate:a", 0.0, 0.2)

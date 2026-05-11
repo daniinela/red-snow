@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://itauy4h7vhnu" path="res://view/world/checkpoint.tscn" id="13_6s0ch"]
 [ext_resource type="PackedScene" uid="uid://3grjx2c4juhm" path="res://view/world/items/item_llave.tscn" id="13_w5bog"]
 [ext_resource type="PackedScene" uid="uid://dnaffftbbfws2" path="res://view/world/rooms/puerta/PuertaLlave.tscn" id="14_7t82t"]
+[ext_resource type="Texture2D" uid="uid://dpnprmwar82g8" path="res://assets/sprites/environment/Gemini_Generated_Image_d8ekxhd8ekxhd8ek (2) - copia.png" id="15_7t82t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_im6ld"]
 texture = ExtResource("4_prlu4")
@@ -123,4 +124,11 @@ position = Vector2(2986, 659)
 
 [node name="PuertaLlave" parent="." unique_id=59536440 instance=ExtResource("14_7t82t")]
 position = Vector2(-176, 663)
+target_room = "tigre/tigre_room"
 door_id = "door_llave_militar"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=156542340 groups=["lugar_sin_llave"]]
+visible = false
+position = Vector2(2986, 659)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("15_7t82t")
