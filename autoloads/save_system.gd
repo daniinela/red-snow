@@ -10,7 +10,6 @@ const SAVE_DIR := "user://saves/"
 const SLOT_COUNT := 3
 
 func _ready() -> void:
-	# Crea la carpeta de saves si no existe
 	DirAccess.make_dir_absolute(SAVE_DIR)
 
 func get_save_path(slot: int) -> String:
@@ -42,7 +41,9 @@ func save(slot: int) -> void:
 		"inventory": Inventory.to_dict(),
 		"flask_max": player.data.flask_max,
 		"flask_current": player.data.flask_max,
-		"monedas": player.data.monedas
+		"monedas": player.data.monedas,
+		"ataque_habilitado": player.ataque_habilitado,
+		"dash_habilitado": player.dash_habilitado,
 	}
 	if player.has_meta("checkpoint_pos"):
 		var pos = player.get_meta("checkpoint_pos")
@@ -54,8 +55,8 @@ func save(slot: int) -> void:
 		file.close()
 		print("[SaveSystem] Slot ", slot, " guardado.")
 
-
-func load_slot(slot: int) -> Dictionary:
+func _read_slot_raw(slot: int) -> Dictionary:
+	# Lee el archivo sin tocar el GameManager ni el Inventory
 	var path = get_save_path(slot)
 	if not FileAccess.file_exists(path):
 		return {}
@@ -66,7 +67,12 @@ func load_slot(slot: int) -> Dictionary:
 	file.close()
 	var json = JSON.new()
 	json.parse(content)
-	var data = json.get_data()
+	return json.get_data()
+
+func load_slot(slot: int) -> Dictionary:
+	var data = _read_slot_raw(slot)
+	if data.is_empty():
+		return {}
 	if data.has("world_state"):
 		GameManager.world_state.from_dict(data["world_state"])
 	if data.has("inventory"):
@@ -88,6 +94,10 @@ func apply_save_to_player(data: Dictionary) -> void:
 	if data.has("monedas"):
 		player.data.monedas = int(data["monedas"])
 		EventBus.monedas_changed.emit(player.data.monedas)
+	if data.has("ataque_habilitado"):
+		player.ataque_habilitado = data["ataque_habilitado"]
+	if data.has("dash_habilitado"):
+		player.dash_habilitado = data["dash_habilitado"]
 
 func slot_exists(slot: int) -> bool:
 	return FileAccess.file_exists(get_save_path(slot))
@@ -101,8 +111,8 @@ func delete_slot(slot: int) -> void:
 func get_slot_info(slot: int) -> Dictionary:
 	if not slot_exists(slot):
 		return {"vacio": true}
-	var data = load_slot(slot)
-	print("slot info: ", data)
+	# Usa _read_slot_raw para NO contaminar el GameManager
+	var data = _read_slot_raw(slot)
 	data["vacio"] = false
 	return data
 

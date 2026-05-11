@@ -6,8 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://kvxjysjfxeim" path="res://assets/sprites/environment/arboless.png" id="3_qj3y5"]
 [ext_resource type="Texture2D" uid="uid://ckg3a4hsigoip" path="res://assets/sprites/environment/arbolcostado.png" id="5_cavl1"]
 [ext_resource type="Texture2D" uid="uid://bpjdq1hiu2anv" path="res://assets/sprites/environment/Gemini_Generated_Image_ukhbe8ukhbe8ukhb (1).png" id="6_gmils"]
+[ext_resource type="PackedScene" uid="uid://itauy4h7vhnu" path="res://view/world/checkpoint.tscn" id="7_kpmme"]
 [ext_resource type="Texture2D" uid="uid://bkt4y3otxaojj" path="res://assets/sprites/environment/tilesBosque.png" id="7_m8tni"]
-[ext_resource type="PackedScene" uid="uid://bi67ivhh35v4n" path="res://view/enemies/enemy_base.tscn" id="8_eeox5"]
+[ext_resource type="Script" uid="uid://b25mv2xtva8tt" path="res://controller/tutorial_manager.gd" id="9_cavl1"]
+[ext_resource type="PackedScene" uid="uid://b3axmgst2xpgx" path="res://view/world/door/door.tscn" id="10_gmils"]
+[ext_resource type="Texture2D" uid="uid://drc0f28piyqth" path="res://assets/sprites/environment/letra A.png" id="11_jtv1d"]
+[ext_resource type="Texture2D" uid="uid://cdwgyqgcr273a" path="res://assets/sprites/environment/letra D.png" id="12_h8ela"]
+[ext_resource type="Texture2D" uid="uid://su6lbrv2b702" path="res://assets/sprites/environment/letra espacio.png" id="13_txjb3"]
+[ext_resource type="PackedScene" uid="uid://b1toqs5her2y" path="res://view/enemies/boss1.tscn" id="14_kpmme"]
+[ext_resource type="Texture2D" uid="uid://dwfkcbj4wqqpl" path="res://assets/sprites/environment/plantas.png" id="15_jtv1d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rty8h"]
 texture = ExtResource("7_m8tni")
@@ -26,6 +33,7 @@ sources/0 = SubResource("TileSetAtlasSource_rty8h")
 [node name="Bosque02" type="Node2D" unique_id=575239870]
 
 [node name="RoomBase" parent="." unique_id=1779632340 instance=ExtResource("2_naomj")]
+room_id = "Bosque/bosque02"
 
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=537862720]
 scroll_scale = Vector2(0.5, 0.5)
@@ -33,7 +41,7 @@ scroll_scale = Vector2(0.5, 0.5)
 [node name="TextureRect" type="TextureRect" parent="Parallax2D2" unique_id=145291684]
 offset_left = -490.00006
 offset_top = -365.0
-offset_right = 4220.4
+offset_right = 4688.4
 offset_bottom = 315.0
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_5wtlo")
@@ -44,7 +52,7 @@ stretch_mode = 1
 [node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=372923264]
 offset_left = -490.0
 offset_top = -365.0
-offset_right = 4521.064
+offset_right = 6020.6387
 offset_bottom = 403.0
 scale = Vector2(1.175, 1.175)
 texture = ExtResource("3_eeox5")
@@ -52,15 +60,15 @@ stretch_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="." unique_id=1904757094]
 offset_left = -490.0
-offset_top = -487.0
-offset_right = 3953.7734
-offset_bottom = 281.0
+offset_top = -480.0
+offset_right = 4395.2827
+offset_bottom = 288.0
 scale = Vector2(1.325, 1.325)
 texture = ExtResource("3_qj3y5")
 stretch_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1810683752]
-z_index = 1
+z_index = 3
 offset_left = -490.0
 offset_top = -584.0
 offset_right = 593.0
@@ -69,7 +77,7 @@ scale = Vector2(0.71, 0.71)
 texture = ExtResource("5_cavl1")
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=1046212709]
-z_index = 1
+z_index = 3
 offset_left = 1225.0
 offset_top = -583.99994
 offset_right = 2358.0
@@ -77,9 +85,58 @@ offset_bottom = 952.00006
 scale = Vector2(0.715, 0.715)
 texture = ExtResource("6_gmils")
 
+[node name="CheckPoint" parent="." unique_id=1920791638 instance=ExtResource("7_kpmme")]
+position = Vector2(2597, 187)
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=78696760]
-tile_map_data = PackedByteArray("AADw/xIAAAACAAAAAAAQABQAAAABAAAAAAAvABQAAAABAAAAAABOABIAAAACAAAAAABtABIAAAACAAAAAADx/x0AAAAAAAAAAAARAB0AAAAAAAAAAAAxAB0AAAAAAAAAAABQAB0AAAAAAAAAAABwAB0AAAAAAAAAAACQAB0AAAAAAAAAAACNABQAAAABAAAAAACsABQAAAABAAAAAADLABQAAAABAAAAAADqABQAAAABAAAAAAAJARQAAAABAAAAAAAoARQAAAABAAAAAABHARQAAAABAAAAAACwAB0AAAAAAAAAAADPAB0AAAAAAAAAAADuAB0AAAAAAAAAAAAMAR0AAAAAAAAAAAArAR0AAAAAAAAAAABJAR0AAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADw/xIAAAACAAAAAAAQABQAAAABAAAAAAAvABQAAAABAAAAAABOABIAAAACAAAAAABtABIAAAACAAAAAADx/x0AAAAAAAAAAAARAB0AAAAAAAAAAAAxAB0AAAAAAAAAAABQAB0AAAAAAAAAAABwAB0AAAAAAAAAAACQAB0AAAAAAAAAAACNABQAAAABAAAAAACsABQAAAABAAAAAADLABQAAAABAAAAAADqABQAAAABAAAAAAAJARQAAAABAAAAAAAoARQAAAABAAAAAABHARQAAAABAAAAAACwAB0AAAAAAAAAAADPAB0AAAAAAAAAAADuAB0AAAAAAAAAAAAMAR0AAAAAAAAAAAArAR0AAAAAAAAAAABJAR0AAAAAAAAAAABqARQAAAABAAAAAACIARQAAAABAAAAAABpAR0AAAAAAAAAAACIAR0AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_d5vtc")
 
-[node name="EnemyBase" parent="." unique_id=1410596035 instance=ExtResource("8_eeox5")]
-position = Vector2(3643, 203)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1915568919]
+script = ExtResource("9_cavl1")
+
+[node name="TeclaA" type="TextureRect" parent="CanvasLayer" unique_id=1036163583]
+offset_left = 662.0
+offset_top = 535.0
+offset_right = 803.0
+offset_bottom = 677.0
+scale = Vector2(0.565, 0.565)
+texture = ExtResource("11_jtv1d")
+metadata/_edit_use_anchors_ = true
+
+[node name="TeclaD" type="TextureRect" parent="CanvasLayer" unique_id=1091659901]
+offset_left = 858.0
+offset_top = 535.0
+offset_right = 999.0
+offset_bottom = 673.0
+scale = Vector2(0.565, 0.565)
+texture = ExtResource("12_h8ela")
+metadata/_edit_use_anchors_ = true
+
+[node name="TeclaEspacio" type="TextureRect" parent="CanvasLayer" unique_id=1226035288]
+offset_left = 704.0
+offset_top = 399.0
+offset_right = 988.00006
+offset_bottom = 538.0
+scale = Vector2(0.565, 0.565)
+texture = ExtResource("13_txjb3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Boss1_tscn" parent="." unique_id=1748306081 instance=ExtResource("14_kpmme")]
+position = Vector2(4111, -83)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1612859176]
+z_index = 2
+position = Vector2(5010, 23)
+texture = ExtResource("15_jtv1d")
+
+[node name="Door" parent="." unique_id=1763464115 instance=ExtResource("10_gmils")]
+position = Vector2(5466, 198)
+target_room = "Puente/PuenteSanPetersburgo"
+requiere_tutorial = true
+
+[node name="SpawnPoint" type="Marker2D" parent="Door" unique_id=962749475]
+position = Vector2(-130, 9)
+
+[node name="StartPoint" type="Marker2D" parent="." unique_id=1141806418]
+position = Vector2(441, 263)

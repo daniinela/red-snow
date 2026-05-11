@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://7yyebyduekda"]
+
+[ext_resource type="Texture2D" uid="uid://dna3veq2cd3e2" path="res://assets/sprites/enemies/Boss1/d3a091e5.png" id="1_0opgy"]
+[ext_resource type="Script" uid="uid://borh3x843f0ur" path="res://controller/raiz.gd" id="1_xj5s1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj5s1"]
+atlas = ExtResource("1_0opgy")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb5is"]
+atlas = ExtResource("1_0opgy")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4klmf"]
+atlas = ExtResource("1_0opgy")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ko3w"]
+atlas = ExtResource("1_0opgy")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lub4o"]
+atlas = ExtResource("1_0opgy")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j76w"]
+atlas = ExtResource("1_0opgy")
+region = Rect2(192, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuqg2"]
+atlas = ExtResource("1_0opgy")
+region = Rect2(0, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5e6m"]
+atlas = ExtResource("1_0opgy")
+region = Rect2(96, 192, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_32p3c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj5s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb5is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4klmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ko3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lub4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j76w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuqg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5e6m")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3emc"]
+size = Vector2(125.5, 87.5)
+
+[node name="Raiz_tscn" type="Area2D" unique_id=1878423128]
+collision_mask = 2
+script = ExtResource("1_xj5s1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=149070399]
+position = Vector2(15, 19)
+scale = Vector2(1.3125, 1.3958334)
+sprite_frames = SubResource("SpriteFrames_32p3c")
+animation = &"idle"
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1968707652]
+position = Vector2(14.25, 2.25)
+shape = SubResource("RectangleShape2D_q3emc")

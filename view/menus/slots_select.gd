@@ -1,3 +1,9 @@
+# view/menus/slots_select.gd
+# -------------------------------------------------------------
+# SLOTS SELECT — Pantalla de selección de slots de guardado
+# Muestra los 3 slots disponibles con su información.
+# Permite crear nueva partida, continuar o borrar.
+# -------------------------------------------------------------
 extends CanvasLayer
 
 @onready var slot1: Button = $VBoxContainer/HBoxContainer/Slot1
@@ -52,18 +58,13 @@ func _seleccionar_slot(slot: int) -> void:
 
 func _pedir_nombre(slot: int) -> void:
 	GameManager.current_slot = slot
-	# Guarda el slot en GameManager para que nombre_partida lo lea
 	get_tree().change_scene_to_file("res://view/menus/nombre_partida.tscn")
 
 func _cargar_partida(slot: int) -> void:
-	GameManager.change_state(GameManager.GameState.PLAYING)
 	var data = SaveSystem.load_slot(slot)
-	var room = "room_01"
-	if data.has("world_state"):
-		room = data["world_state"].get("current_room", "room_01")
-	get_tree().change_scene_to_file("res://view/world/rooms/" + room + ".tscn")
+	GameManager.change_state(GameManager.GameState.PLAYING)
+	get_tree().change_scene_to_file("res://view/world/game_world.tscn")
 
 func _borrar_slot(slot: int) -> void:
 	SaveSystem.delete_slot(slot)
 	_actualizar_slots()
-	

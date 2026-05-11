@@ -1,31 +1,30 @@
+# view/world/room_base.gd
 # -------------------------------------------------------------
-# ROOM BASE — Script base de cada habitación
-# Al cargar, posiciona al jugador en la puerta correcta
-# según de dónde viene, o en el último checkpoint si
-# está cargando una partida guardada.
-# Escucha room_transition_requested para cambiar de escena.
+# ROOM BASE — Script base heredado por cada habitación
+# Posiciona al jugador al entrar, ya sea por puerta o
+# checkpoint. Configura los límites de la cámara según
+# el TileMap más grande de la escena.
 # -------------------------------------------------------------
 extends Node2D
 
 @export var room_id: String = "room_01"
+var _posicionado: bool = false
 
 func _ready() -> void:
-	EventBus.room_transition_requested.connect(_on_room_transition_requested)
-	tree_exiting.connect(func(): 
-		if EventBus.room_transition_requested.is_connected(_on_room_transition_requested):
-			EventBus.room_transition_requested.disconnect(_on_room_transition_requested)
-	)
 	await get_tree().process_frame
-	_posicionar_jugador()
-	await get_tree().process_frame  # ← espera un frame más
+	await get_tree().process_frame
+	if not _posicionado:
+		_posicionado = true
+		_posicionar_jugador()
+	await get_tree().process_frame
 	_setup_camera_limits()
 	GameManager.world_state.visit_room(room_id)
+
 
 func _setup_camera_limits() -> void:
 	var cam = get_tree().get_first_node_in_group("camera")
 	if not cam:
 		return
-
 	var tilemap = null
 	var biggest_area := 0.0
 	for tm in get_tree().get_nodes_in_group("tilemap"):
@@ -34,48 +33,56 @@ func _setup_camera_limits() -> void:
 		if area > biggest_area:
 			biggest_area = area
 			tilemap = tm
-
 	if not tilemap:
 		return
-
 	var cell := Vector2i(tilemap.tile_set.tile_size)
 	var rect: Rect2i = tilemap.get_used_rect()
-
 	cam.limit_left   = rect.position.x * cell.x
 	cam.limit_top    = rect.position.y * cell.y
 	cam.limit_right  = rect.end.x      * cell.x
 	cam.limit_bottom = rect.end.y      * cell.y
 
+
 func _posicionar_jugador() -> void:
 	var player = get_tree().get_first_node_in_group("player")
 	if not player:
 		return
-
 	var last_door = GameManager.world_state.last_door_used
-
-	# Viene de una puerta: busca esa puerta en la escena y spawnea ahí
 	if last_door != "":
-		var doors = get_tree().get_nodes_in_group("door")
-		for door in doors:
+		for door in get_tree().get_nodes_in_group("door"):
 			if door.door_id == last_door:
-				player.global_position = door.global_position
-				player.set_meta("checkpoint_pos", door.global_position)
+				var spawn = door.get_node_or_null("SpawnPoint")
+				var pos = spawn.global_position if spawn else door.global_position
+				player.global_position = pos
+				player.velocity = Vector2.ZERO
+				player.set_meta("checkpoint_pos", pos)
 				GameManager.world_state.last_door_used = ""
+				print("[RoomBase] Spawn en puerta: ", door.door_id, " -> ", pos)
 				return
-
-	# Carga desde save: usa el checkpoint guardado
+	if player.has_meta("checkpoint_pos"):
+		var pos = player.get_meta("checkpoint_pos")
+		player.global_position = pos
+		player.velocity = Vector2.ZERO
+		print("[RoomBase] Spawn en checkpoint meta: ", pos)
+		return
+	# Partida cargada — lee checkpoint del save sin tocar world_state
 	var slot = GameManager.current_slot
 	if slot == 0:
 		return
-	var data = SaveSystem.load_slot(slot)
-	if data.is_empty():
+	var path = SaveSystem.get_save_path(slot)
+	if not FileAccess.file_exists(path):
 		return
+	var file = FileAccess.open(path, FileAccess.READ)
+	if not file:
+		return
+	var json = JSON.new()
+	json.parse(file.get_as_text())
+	file.close()
+	var data = json.get_data()
 	var pos_x = data.get("checkpoint_pos_x", 0.0)
 	var pos_y = data.get("checkpoint_pos_y", 0.0)
 	if pos_x != 0.0 or pos_y != 0.0:
 		player.global_position = Vector2(pos_x, pos_y)
+		player.velocity = Vector2.ZERO
 		player.set_meta("checkpoint_pos", Vector2(pos_x, pos_y))
-		print("Jugador posicionado en checkpoint: ", Vector2(pos_x, pos_y))
-
-func _on_room_transition_requested(target_room: String, _door_id: String) -> void:
-	get_tree().change_scene_to_file.call_deferred("res://view/world/rooms/" + target_room + ".tscn")
+		print("[RoomBase] Spawn en checkpoint save: ", Vector2(pos_x, pos_y))

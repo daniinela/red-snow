@@ -209,6 +209,7 @@ data = ExtResource("2_dvxkm")
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_xi8o2")
 animation = &"walk"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=14485393]
 shape = SubResource("CapsuleShape2D_auwfp")

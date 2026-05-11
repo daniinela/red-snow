@@ -7,7 +7,7 @@
 class_name WorldState
 extends Resource
 
-@export var current_room: String = "room_01"
+@export var current_room: String = "Bosque/bosque02"
 @export var last_door_used: String = ""
 @export var visited_rooms: Array[String] = []
 @export var opened_doors: Array[String] = []
