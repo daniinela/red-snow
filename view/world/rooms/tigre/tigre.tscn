@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://bttnclmgvi55y"]
+
+[ext_resource type="Script" uid="uid://bcbh4n6ui7004" path="res://controller/tigre.gd" id="1_ux7pf"]
+[ext_resource type="Texture2D" uid="uid://y3hwl7f7o6aj" path="res://assets/sprites/tigre/TigreAlbinoSpriteFinalll.png" id="2_7bt8n"]
+[ext_resource type="Texture2D" uid="uid://18f3vs7yv2sg" path="res://assets/sprites/environment/letra E.png" id="3_arp2t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arp2t"]
+size = Vector2(312, 247)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqgfe"]
+atlas = ExtResource("2_7bt8n")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7ftj"]
+atlas = ExtResource("2_7bt8n")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r7mg"]
+atlas = ExtResource("2_7bt8n")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21bps"]
+atlas = ExtResource("2_7bt8n")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx741"]
+atlas = ExtResource("2_7bt8n")
+region = Rect2(320, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w33so"]
+atlas = ExtResource("2_7bt8n")
+region = Rect2(640, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t07ij"]
+atlas = ExtResource("2_7bt8n")
+region = Rect2(0, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1fvu"]
+atlas = ExtResource("2_7bt8n")
+region = Rect2(320, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su0me"]
+atlas = ExtResource("2_7bt8n")
+region = Rect2(640, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jsys"]
+atlas = ExtResource("2_7bt8n")
+region = Rect2(0, 960, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y0ivg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqgfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7ftj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r7mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21bps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx741")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w33so")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t07ij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1fvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su0me")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jsys")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Tigre" type="Area2D" unique_id=280291317]
+script = ExtResource("1_ux7pf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=890687077]
+position = Vector2(-2, 2.5)
+shape = SubResource("RectangleShape2D_arp2t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2027106833]
+sprite_frames = SubResource("SpriteFrames_y0ivg")
+animation = &"idle"
+flip_h = true
+
+[node name="IndicadorE" type="Sprite2D" parent="." unique_id=1678128549]
+position = Vector2(0, -173.00002)
+scale = Vector2(0.155, 0.155)
+texture = ExtResource("3_arp2t")
