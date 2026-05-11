@@ -23,12 +23,13 @@ func set_slot(s: int) -> void:
 
 func _on_confirmar() -> void:
 	var nombre = nombre_input.text.strip_edges()
-	print("nombre escrito: ", nombre)
 	if nombre == "":
 		nombre = "Partida " + str(slot)
 	SaveSystem.save_nuevo(slot, nombre)
+	GameManager.world_state.current_room = "Bosque/bosque02"
+	GameManager.nueva_partida_mode = true
 	GameManager.change_state(GameManager.GameState.PLAYING)
-	get_tree().change_scene_to_file("res://view/world/rooms/Bosque/bosque02.tscn")
+	get_tree().change_scene_to_file("res://view/world/game_world.tscn")
 
 func _on_cancelar() -> void:
 	get_tree().change_scene_to_file("res://view/menus/slots_select.tscn")

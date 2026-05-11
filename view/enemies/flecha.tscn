@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://3bhe4tf5tycv"]
+
+[ext_resource type="Script" uid="uid://ie1gu3366elk" path="res://controller/flecha.gd" id="1_7ps8e"]
+[ext_resource type="Texture2D" uid="uid://dalpmrnuv32vr" path="res://assets/sprites/enemies/flecha.png" id="2_8m60t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwtcs"]
+atlas = ExtResource("2_8m60t")
+region = Rect2(0, 0, 99, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2pay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwtcs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36avx"]
+size = Vector2(80, 13)
+
+[node name="Flecha" type="Area2D" unique_id=1804098024]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_7ps8e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1775874672]
+sprite_frames = SubResource("SpriteFrames_c2pay")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=243688069]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_36avx")
+
+[node name="VisibleOnScreen" type="VisibleOnScreenNotifier2D" parent="." unique_id=491288471]
+
+[node name="Estela" type="CPUParticles2D" parent="." unique_id=2074160225]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://dbknxjyl2vmjv"]
+
+[ext_resource type="Script" uid="uid://cljixhs4c2cgt" path="res://model/enemy_data.gd" id="1_6f6rx"]
+
+[resource]
+script = ExtResource("1_6f6rx")
+hp = 100
+dano = 20
+velocidad = 0.0
+rango_deteccion = 500.0
+rango_ataque = 400.0
+monedas = 0
+metadata/_custom_type_script = "uid://cljixhs4c2cgt"

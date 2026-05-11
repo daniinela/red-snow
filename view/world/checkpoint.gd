@@ -1,16 +1,20 @@
 # view/world/checkpoint.gd
 # -------------------------------------------------------------
-# CHECKPOINT — Estatua de respawn
+# CHECKPOINT — Campana de respawn
 # El jugador presiona E para activarla.
 # Se puede usar múltiples veces — siempre cura al 100%.
 # -------------------------------------------------------------
 extends Area2D
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var indicador_e: Sprite2D = $IndicadorE
 var player_nearby: bool = false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	sprite.play("idle")
+	indicador_e.visible = false
 
 func _process(_delta: float) -> void:
 	if player_nearby and Input.is_action_just_pressed("interact"):
@@ -19,26 +23,27 @@ func _process(_delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_nearby = true
+		indicador_e.visible = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_nearby = false
+		indicador_e.visible = false
 
 func _activar() -> void:
 	var player = get_tree().get_first_node_in_group("player")
 	if not player:
 		return
 	player.set_meta("checkpoint_pos", global_position)
-	var hp_max = player.data.hp_max
-	player.data.hp_current = hp_max
-	EventBus.player_healed.emit(hp_max, hp_max)
-	# Guarda la room actual en WorldState antes de guardar
+	player.data.hp_current = player.data.hp_max
+	EventBus.player_healed.emit(player.data.hp_max, player.data.hp_max)
+	player.data.flask_current = player.data.flask_max
+	EventBus.player_flask_changed.emit(player.data.flask_current, player.data.flask_max)
 	var room = get_tree().get_first_node_in_group("room")
 	if room and room.get("room_id"):
 		GameManager.world_state.current_room = room.room_id
-	print("Guardando room: ", GameManager.world_state.current_room)
-	print("Guardando pos: ", global_position)
-	player.data.flask_current = player.data.flask_max
-	EventBus.player_flask_changed.emit(player.data.flask_current, player.data.flask_max)
 	SaveSystem.save(GameManager.current_slot)
-	print("Checkpoint activado — vida restaurada y partida guardada")
+	EventBus.checkpoint_activado.emit()
+	sprite.play("activar")
+	await sprite.animation_finished
+	sprite.play("idle")
