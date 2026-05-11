@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://fjsxirwkme2g"]
+
+[ext_resource type="Script" uid="uid://bn67truvw8goy" path="res://view/menus/tarjeta_habilidad.gd" id="1_umv5v"]
+[ext_resource type="Texture2D" uid="uid://ckbrim5t4cr63" path="res://assets/sprites/environment/tarjeta,ataque.png" id="2_sojgr"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1916376419]
+script = ExtResource("1_umv5v")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=12849825]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 476.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.050708726, 0.050708726, 0.050708726, 0.86800003)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1077127464]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -424.0
+offset_top = -632.0
+offset_right = 424.0
+offset_bottom = 632.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_sojgr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1892536619]

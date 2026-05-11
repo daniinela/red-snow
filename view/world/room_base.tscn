@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dlu4ak4bs6sq8"]
 
-[ext_resource type="Script" uid="uid://i45dlcms8flf" path="res://view/world/room_base.gd" id="1_457os"]
-[ext_resource type="PackedScene" uid="uid://l4cov265p3sf" path="res://view/player/player.tscn" id="4_457os"]
+[ext_resource type="Script" uid="uid://bwx65hii1ebns" path="res://view/world/room_base.gd" id="1_457os"]
 [ext_resource type="PackedScene" uid="uid://dckjbc3ge0h8d" path="res://view/ui/hud.tscn" id="4_h7lr2"]
 [ext_resource type="PackedScene" uid="uid://cgg47y5buqf3f" path="res://view/ui/death_screen.tscn" id="5_erd8e"]
 [ext_resource type="PackedScene" uid="uid://bpqudhxtg7og" path="res://view/ui/inventory/inventory_screen.tscn" id="5_jogld"]
@@ -9,18 +8,10 @@
 [node name="RoomBase" type="Node2D" unique_id=1779632340]
 script = ExtResource("1_457os")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=452382730 groups=["camera"]]
-offset = Vector2(100, 30)
-zoom = Vector2(1.5, 1.5)
-
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1914655297]
-position = Vector2(0, 237)
-
-[node name="Player_tscn" parent="." unique_id=530970095 instance=ExtResource("4_457os")]
-position = Vector2(4, 223)
+position = Vector2(287, 198)
 
 [node name="Hud" parent="." unique_id=1170957323 instance=ExtResource("4_h7lr2")]
-visible = false
 
 [node name="CanvasLayer" parent="." unique_id=2132067144 instance=ExtResource("5_erd8e")]
 visible = false

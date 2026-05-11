@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://3grjx2c4juhm"]
+
+[ext_resource type="Script" uid="uid://c4n2a82sqb460" path="res://controller/item_llave.gd" id="1_vk545"]
+[ext_resource type="Texture2D" uid="uid://bugu26xq8m6sr" path="res://assets/sprites/environment/Gemini_Generated_Image_d8ekxhd8ekxhd8ek (1).png" id="2_llfbd"]
+[ext_resource type="Texture2D" uid="uid://18f3vs7yv2sg" path="res://assets/sprites/environment/letra E.png" id="3_n83v5"]
+[ext_resource type="Texture2D" uid="uid://dpnprmwar82g8" path="res://assets/sprites/environment/Gemini_Generated_Image_d8ekxhd8ekxhd8ek (2) - copia.png" id="4_voki2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llfbd"]
+size = Vector2(203, 219)
+
+[node name="ItemLlave" type="Area2D" unique_id=954846503]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_vk545")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=600935119]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_llfbd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1217335352]
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("2_llfbd")
+
+[node name="IndicadorE" type="Sprite2D" parent="." unique_id=1716668746]
+position = Vector2(0, -109.000015)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("3_n83v5")
+
+[node name="SpriteSinLlave" type="Sprite2D" parent="." unique_id=1917378276]
+visible = false
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("4_voki2")

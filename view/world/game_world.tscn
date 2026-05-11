@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dqmfu1s8cou82"]
+
+[ext_resource type="Script" uid="uid://de2cwim7qwk2r" path="res://controller/game_world_controller.gd" id="1_e5ci7"]
+[ext_resource type="PackedScene" uid="uid://l4cov265p3sf" path="res://view/player/player.tscn" id="2_ujvtn"]
+
+[node name="GameWorld" type="Node" unique_id=699712449]
+script = ExtResource("1_e5ci7")
+
+[node name="RoomContainer" type="Node" parent="." unique_id=1932126761]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=141349224]
+
+[node name="Fade" type="ColorRect" parent="CanvasLayer" unique_id=820837039]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Player_tscn" parent="." unique_id=530970095 instance=ExtResource("2_ujvtn")]
+position = Vector2(70, 248)
