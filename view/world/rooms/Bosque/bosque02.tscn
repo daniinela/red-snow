@@ -30,9 +30,16 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_rty8h")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtv1d"]
+size = Vector2(188, 976)
+
 [node name="Bosque02" type="Node2D" unique_id=575239870]
 
 [node name="RoomBase" parent="." unique_id=1779632340 instance=ExtResource("2_naomj")]
+limite_izquierda = -550
+limite_derecha = 5400
+limite_arriba = -500
+limite_abajo = 1500
 room_id = "Bosque/bosque02"
 
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=537862720]
@@ -140,3 +147,10 @@ position = Vector2(-130, 9)
 
 [node name="StartPoint" type="Marker2D" parent="." unique_id=1141806418]
 position = Vector2(441, 263)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1444255228]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=684151413]
+position = Vector2(-549, -60)
+shape = SubResource("RectangleShape2D_jtv1d")

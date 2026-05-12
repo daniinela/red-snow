@@ -6,8 +6,12 @@
 # el TileMap más grande de la escena.
 # -------------------------------------------------------------
 extends Node2D
-
+@export var limite_izquierda: int = 0
+@export var limite_derecha: int = 1920
+@export var limite_arriba: int = 0
+@export var limite_abajo: int = 1080
 @export var room_id: String = "room_01"
+
 var _posicionado: bool = false
 
 func _ready() -> void:
@@ -23,24 +27,14 @@ func _ready() -> void:
 
 func _setup_camera_limits() -> void:
 	var cam = get_tree().get_first_node_in_group("camera")
+	print("Camara encontrada: ", cam)
 	if not cam:
 		return
-	var tilemap = null
-	var biggest_area := 0.0
-	for tm in get_tree().get_nodes_in_group("tilemap"):
-		var r = tm.get_used_rect()
-		var area = r.size.x * r.size.y
-		if area > biggest_area:
-			biggest_area = area
-			tilemap = tm
-	if not tilemap:
-		return
-	var cell := Vector2i(tilemap.tile_set.tile_size)
-	var rect: Rect2i = tilemap.get_used_rect()
-	cam.limit_left   = rect.position.x * cell.x
-	cam.limit_top    = rect.position.y * cell.y
-	cam.limit_right  = rect.end.x      * cell.x
-	cam.limit_bottom = rect.end.y      * cell.y
+	print("Poniendo limites: ", limite_izquierda, limite_derecha, limite_arriba, limite_abajo)
+	cam.limit_left = limite_izquierda
+	cam.limit_right = limite_derecha
+	cam.limit_top = limite_arriba
+	cam.limit_bottom = limite_abajo
 
 
 func _posicionar_jugador() -> void:

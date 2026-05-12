@@ -6,10 +6,10 @@
 script = ExtResource("1_q3l31")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1017618125]
-offset_left = -107.0
-offset_top = 9.0
-offset_right = 219.0
-offset_bottom = 36.0
+offset_left = 23.0
+offset_top = 30.0
+offset_right = 349.0
+offset_bottom = 57.0
 value = 100.0
 
 [node name="MonedaContainer" type="HBoxContainer" parent="." unique_id=1625814550]
