@@ -393,9 +393,9 @@ room_id = "Castillo/Castillo_Boss"
 motion_scale = Vector2(0.3, 0.3)
 
 [node name="TextureRect" type="TextureRect" parent="RoomBase/ParallaxBackground/ParallaxLayer" unique_id=615659263]
-offset_left = -428.0
+offset_left = -439.0
 offset_top = -273.0
-offset_right = 22014.0
+offset_right = 22039.666
 offset_bottom = 4335.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_5pcx0")
@@ -452,10 +452,10 @@ stretch_mode = 1
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="RoomBase/ParallaxBackground" unique_id=1455128511]
 
 [node name="TextureRect" type="TextureRect" parent="RoomBase/ParallaxBackground/ParallaxLayer4" unique_id=59928384]
-offset_left = 56.0
-offset_top = -55.0
-offset_right = 4573.1807
-offset_bottom = 545.0
+offset_left = 1.0
+offset_top = -64.0
+offset_right = 4518.1807
+offset_bottom = 536.0
 scale = Vector2(1.135, 1.135)
 texture = ExtResource("7_tspwj")
 stretch_mode = 1
