@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://en13tgnexntk"]
+
+[ext_resource type="Script" uid="uid://cqj0jkyaxkqpl" path="res://controller/natasha.gd" id="1_3n8je"]
+[ext_resource type="Texture2D" uid="uid://d82cc6t7oinn" path="res://assets/sprites/npc/The-winged-figure-in-a-dark-dress-floats-steadily,-bobbing-g (1).png" id="2_6tab6"]
+[ext_resource type="Texture2D" uid="uid://18f3vs7yv2sg" path="res://assets/sprites/environment/letra E.png" id="3_euob7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tab6"]
+size = Vector2(211, 246)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euob7"]
+atlas = ExtResource("2_6tab6")
+region = Rect2(0, 0, 214, 214)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6gx4"]
+atlas = ExtResource("2_6tab6")
+region = Rect2(214, 0, 214, 214)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a0qq"]
+atlas = ExtResource("2_6tab6")
+region = Rect2(428, 0, 214, 214)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e86jv"]
+atlas = ExtResource("2_6tab6")
+region = Rect2(642, 0, 214, 214)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fqpm"]
+atlas = ExtResource("2_6tab6")
+region = Rect2(856, 0, 214, 214)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1yju"]
+atlas = ExtResource("2_6tab6")
+region = Rect2(1070, 0, 214, 214)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vm73r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euob7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6gx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a0qq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e86jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fqpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1yju")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Natasha" type="Area2D" unique_id=170035714]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_3n8je")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1210795431]
+position = Vector2(38.5, 30)
+shape = SubResource("RectangleShape2D_6tab6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1468134726]
+position = Vector2(27, 30)
+scale = Vector2(1.2523365, 1.2803738)
+sprite_frames = SubResource("SpriteFrames_vm73r")
+animation = &"idle"
+
+[node name="IndicadorE" type="Sprite2D" parent="." unique_id=2059212524]
+position = Vector2(0, -129)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("3_euob7")

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://8xud3udnra7v"]
+
+[ext_resource type="Script" uid="uid://dr1moai7q3rjo" path="res://controller/dialogo_natasha.gd" id="1_76n8e"]
+[ext_resource type="Texture2D" uid="uid://0naq4tiyna18" path="res://assets/sprites/npc/CuadroTexto.png" id="2_ggm5w"]
+[ext_resource type="FontFile" uid="uid://c5wvfaqi7cphx" path="res://assets/fonts/Cinzel-Black.ttf" id="3_n4cp7"]
+
+[node name="DialogoNatasha" type="CanvasLayer" unique_id=1924890244 groups=["dialogo_natasha"]]
+process_mode = 3
+script = ExtResource("1_76n8e")
+
+[node name="Panel" type="TextureRect" parent="." unique_id=282270365]
+offset_left = 143.00002
+offset_top = 892.0
+offset_right = 2312.8926
+offset_bottom = 1456.0
+scale = Vector2(0.465, 0.31)
+mouse_filter = 0
+texture = ExtResource("2_ggm5w")
+
+[node name="Texto" type="RichTextLabel" parent="Panel" unique_id=352952999]
+layout_mode = 0
+offset_left = 337.5
+offset_top = 118.75
+offset_right = 1875.0
+offset_bottom = 437.5
+theme_override_fonts/normal_font = ExtResource("3_n4cp7")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "Me llaman Natasha. Llevo aquí desde 1905."
+
+[node name="Opciones" type="VBoxContainer" parent="Panel" unique_id=1008676070]
+process_mode = 3
+layout_mode = 0
+offset_left = 165.59137
+offset_top = 6.2942505e-05
+offset_right = 1915.5913
+offset_bottom = 532.2579
+alignment = 1
+
+[node name="Btn1" type="Button" parent="Panel/Opciones" unique_id=2029656329]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_n4cp7")
+theme_override_font_sizes/font_size = 70
+text = "¿Dónde estoy?"
+
+[node name="Btn2" type="Button" parent="Panel/Opciones" unique_id=841014469]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_n4cp7")
+theme_override_font_sizes/font_size = 70
+text = "¿Quién eres tú?"
+
+[node name="Btn3" type="Button" parent="Panel/Opciones" unique_id=735428739]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_n4cp7")
+theme_override_font_sizes/font_size = 70
+text = "¿Por qué estoy aquí?"
+
+[node name="Btn4" type="Button" parent="Panel/Opciones" unique_id=1809307790]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_n4cp7")
+theme_override_font_sizes/font_size = 70
+text = "Ya sé suficiente."
+
+[node name="BotonContinuar" type="Button" parent="Panel" unique_id=381437778]
+layout_mode = 0
+offset_left = 1668.75
+offset_top = 268.75
+offset_right = 2037.5
+offset_bottom = 500.0
+
+[connection signal="pressed" from="Panel/Opciones/Btn1" to="." method="_on_btn_1_pressed"]
+[connection signal="pressed" from="Panel/Opciones/Btn2" to="." method="_on_btn_2_pressed"]
+[connection signal="pressed" from="Panel/Opciones/Btn3" to="." method="_on_btn_3_pressed"]
+[connection signal="pressed" from="Panel/Opciones/Btn4" to="." method="_on_btn_4_pressed"]

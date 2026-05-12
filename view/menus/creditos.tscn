@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d0earnr8bapl7"]
+
+[node name="Creditos" type="Node2D" unique_id=413143742]
+
+[node name="Label" type="Label" parent="." unique_id=383140738]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "gracias
+"

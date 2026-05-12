@@ -125,7 +125,9 @@ position = Vector2(2986, 659)
 [node name="PuertaLlave" parent="." unique_id=59536440 instance=ExtResource("14_7t82t")]
 position = Vector2(-176, 663)
 target_room = "tigre/tigre_room"
-door_id = "door_llave_militar"
+
+[node name="SpawnPoint" type="Marker2D" parent="PuertaLlave" unique_id=816502664]
+position = Vector2(252.85715, 191.42856)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=156542340 groups=["lugar_sin_llave"]]
 visible = false
