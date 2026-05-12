@@ -221,10 +221,14 @@ func _on_damaged(_amount: int, _hp_current: int) -> void:
 	sprite.modulate = Color.WHITE * 3.0
 	particulas_sangre.restart()
 	particulas_sangre.emitting = true
+	# Desactiva colisión con enemigos durante el hurt
+	set_collision_mask_value(4, false)
 	await get_tree().create_timer(0.4).timeout
 	sprite.modulate = Color.WHITE
 	await get_tree().create_timer(0.6).timeout
 	is_hurt = false
+	# Reactiva colisión con enemigos
+	set_collision_mask_value(4, true)
 
 func _on_dash_timer_timeout() -> void:
 	velocity.x = 0

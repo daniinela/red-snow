@@ -44,7 +44,11 @@ func _ready() -> void:
 	sprite.play("idle")
 	_configurar_particulas()
 	_configurar_shader()
+	add_to_group("angel")
 
+func iniciar_posicion(pos: Vector2) -> void:
+	global_position = pos
+	posicion_base_y = pos.y
 
 func _configurar_shader() -> void:
 	# Crea el material con el shader de descarga una sola vez

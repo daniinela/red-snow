@@ -15,24 +15,28 @@ extends Area2D
 
 var player_inside: bool = false
 var tutorial_done: bool = false
+var activa: bool = false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	# Espera antes de activarse para evitar trigger al spawn
+	await get_tree().create_timer(0.8).timeout
+	activa = true
 	if requiere_tutorial:
-		# Espera un frame para que el tutorial exista en escena
-		await get_tree().process_frame
 		var tm = get_tree().get_first_node_in_group("tutorial")
 		if tm:
 			tm.tutorial_completo.connect(func(): tutorial_done = true)
 		else:
-			tutorial_done = true  # Si no hay tutorial, no bloquea
+			tutorial_done = true
 	else:
 		tutorial_done = true
 
 func _process(_delta: float) -> void:
+	if not activa:
+		return
 	if player_inside and tutorial_done:
-		player_inside = false  # ← evita que dispare múltiples veces
+		player_inside = false
 		_transition()
 
 func _on_body_entered(body: Node2D) -> void:

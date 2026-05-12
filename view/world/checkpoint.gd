@@ -47,3 +47,4 @@ func _activar() -> void:
 	sprite.play("activar")
 	await sprite.animation_finished
 	sprite.play("idle")
+	print("Checkpoint activado en: ", global_position, " room: ", GameManager.world_state.current_room)

@@ -8,7 +8,7 @@ extends Area2D
 
 @export var llave_id: String = "llave_militar"
 @export var target_room: String = ""
-@export var door_id: String = ""
+@export var door_id: String = "door_llave_militar"
 @onready var indicador_e: Sprite2D = $IndicadorE
 @onready var sprite_puerta: Sprite2D = $SpritePuerta
 
@@ -30,13 +30,11 @@ func _process(_delta: float) -> void:
 
 func _intentar_abrir() -> void:
 	if not GameManager.world_state.is_door_open(llave_id):
-		# No tiene la llave — feedback de bloqueada
 		_shake_bloqueada()
 		return
-	# Tiene la llave — abrir con fade normal
 	indicador_e.visible = false
-	GameManager.world_state.last_door_used = door_id
-	EventBus.room_transition_requested.emit(target_room, door_id)
+	GameManager.world_state.last_door_used = "door_tigre"
+	EventBus.room_transition_requested.emit(target_room, "door_tigre")
 
 
 func _shake_bloqueada() -> void:

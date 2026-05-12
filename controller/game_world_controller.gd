@@ -60,8 +60,10 @@ func _load_initial_room() -> void:
 	GameManager.change_state(GameManager.GameState.PLAYING)
 
 
-func _on_transition_requested(target_room: String, _door_id: String) -> void:
+func _on_transition_requested(target_room: String, door_id: String) -> void:
 	print("[GameWorld] Transicion solicitada a: ", target_room)
+	if door_id != "":
+		GameManager.world_state.last_door_used = door_id
 	await _fade_to_black()
 	_load_room(_get_room_path(target_room))
 	await get_tree().process_frame
@@ -92,6 +94,7 @@ func _get_room_path(room_id: String) -> String:
 		"puerta/Puerta01": "res://view/world/rooms/puerta/Puerta01.tscn",
 		"room_01": "res://view/world/rooms/room_01.tscn",
 		"room_02": "res://view/world/rooms/room_02.tscn",
+		"menu": "res://view/menus/cinematica_final.tscn",
 	}
 	if not map.has(room_id):
 		push_error("[GameWorld] room_id no encontrado en mapa: " + room_id)
