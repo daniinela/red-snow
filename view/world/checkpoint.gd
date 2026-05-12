@@ -8,6 +8,8 @@ extends Area2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var indicador_e: Sprite2D = $IndicadorE
+@onready var sonido: AudioStreamPlayer2D = $SonidoCampana  # 👈 nodo de audio
+
 var player_nearby: bool = false
 
 func _ready() -> void:
@@ -44,6 +46,7 @@ func _activar() -> void:
 		GameManager.world_state.current_room = room.room_id
 	SaveSystem.save(GameManager.current_slot)
 	EventBus.checkpoint_activado.emit()
+	sonido.play()
 	sprite.play("activar")
 	await sprite.animation_finished
 	sprite.play("idle")

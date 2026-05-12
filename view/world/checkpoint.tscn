@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://j5cy5r1rd383" path="res://view/world/checkpoint.gd" id="1_o0lx7"]
 [ext_resource type="Texture2D" uid="uid://csqcga10qcxdm" path="res://assets/sprites/environment/8819cec3.png" id="2_fgghm"]
 [ext_resource type="Texture2D" uid="uid://18f3vs7yv2sg" path="res://assets/sprites/environment/letra E.png" id="3_rarp8"]
+[ext_resource type="AudioStream" uid="uid://hpvxsw18somw" path="res://musica/Campana/freesound_community-church-bell-5993.mp3" id="4_dtayn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgghm"]
 size = Vector2(468, 389)
@@ -103,6 +104,7 @@ script = ExtResource("1_o0lx7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1033517436]
 position = Vector2(2, -60)
+scale = Vector2(2.065, 2.065)
 shape = SubResource("RectangleShape2D_fgghm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2104223402]
@@ -116,3 +118,8 @@ autoplay = "idle"
 position = Vector2(-3, -316)
 scale = Vector2(0.17508417, 0.16300367)
 texture = ExtResource("3_rarp8")
+
+[node name="SonidoCampana" type="AudioStreamPlayer2D" parent="." unique_id=30977810]
+stream = ExtResource("4_dtayn")
+volume_db = 8.925
+max_distance = 750.0

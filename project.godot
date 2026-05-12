@@ -14,6 +14,10 @@ config/name="RedSnowv0"
 run/main_scene="uid://0fnxjvx872s4"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 EventBus="*uid://8miso4ox4qm8"

@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://wn430k3v4xts" path="res://assets/sprites/player/jump2.png" id="7_fn2lk"]
 [ext_resource type="Texture2D" uid="uid://dlvrf4u8bdluw" path="res://assets/sprites/player/parry.png" id="8_ydlf1"]
 [ext_resource type="Texture2D" uid="uid://cjncfcrt8k538" path="res://assets/sprites/player/running.png" id="9_g7s7s"]
+[ext_resource type="AudioStream" uid="uid://dg3po7m1p5nh6" path="res://musica/Sonidos_Espada/dragon-studio-sword-breaking-sound-effect-393840.mp3" id="15_ea8dl"]
+[ext_resource type="AudioStream" uid="uid://cfbknyp4f53yj" path="res://musica/Sonidos_Espada/dragon-studio-sword-slice-2-393845.mp3" id="16_wbhuv"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ydlf1"]
 particle_flag_disable_z = true
@@ -838,7 +840,7 @@ animation = &"Start"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1943735145]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_b162t")
-animation = &"attack"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1185392230]
 position = Vector2(0, -36)
@@ -876,6 +878,16 @@ position = Vector2(22, 13)
 position = Vector2(0, -267)
 offset = Vector2(100, 30)
 zoom = Vector2(1.5, 1.5)
+
+[node name="SonidoGolpeAcierto" type="AudioStreamPlayer2D" parent="Player" unique_id=1760900803]
+position = Vector2(80, -20)
+stream = ExtResource("15_ea8dl")
+volume_db = 24.0
+pitch_scale = 3.0
+
+[node name="SonidoGolpeFallo" type="AudioStreamPlayer2D" parent="Player" unique_id=1746992350]
+position = Vector2(80, -20)
+stream = ExtResource("16_wbhuv")
 
 [connection signal="timeout" from="Player/DashTimer" to="Player" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="Player/CoyoteTimer" to="Player" method="_on_coyote_timer_timeout"]

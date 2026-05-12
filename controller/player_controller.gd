@@ -39,7 +39,8 @@ var dash_cooldown: bool = false
 var was_on_floor: bool = false
 var ataque_habilitado: bool = true
 var dash_habilitado: bool = true
-
+			
+			
 func _ready() -> void:
 	EventBus.player_damaged.connect(_on_damaged)
 	attack_hitbox.body_entered.connect(combat.on_hit)

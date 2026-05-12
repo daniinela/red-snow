@@ -24,7 +24,6 @@ func _load_initial_room() -> void:
 	_load_room(room_path)
 	await get_tree().process_frame
 	await get_tree().process_frame
-	# Nueva partida — posiciona en StartPoint
 	if GameManager.nueva_partida_mode:
 		var start = current_room_node.get_node_or_null("StartPoint")
 		if start:
@@ -33,14 +32,17 @@ func _load_initial_room() -> void:
 				player.global_position = start.global_position
 				player.velocity = Vector2.ZERO
 	await _fade_to_clear()
+	GameManager.change_state(GameManager.GameState.PLAYING)  # ← esta línea
 
 func _on_transition_requested(target_room: String, _door_id: String) -> void:
 	print("[GameWorld] Transicion solicitada a: ", target_room)
 	await _fade_to_black()
+	GameManager.change_state(GameManager.GameState.MENU)  # pausa movimiento durante transición
 	_load_room(_get_room_path(target_room))
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await _fade_to_clear()
+	GameManager.change_state(GameManager.GameState.PLAYING)  # ← y esta
 
 
 func _load_room(path: String) -> void:
