@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://cxpr0xfjmy1r6"]
+
+[ext_resource type="Script" uid="uid://jfqwhfwqod5c" path="res://controller/abuelo_boss.gd" id="1_u1s4w"]
+[ext_resource type="Texture2D" uid="uid://bkqvb1lq63167" path="res://assets/sprites/enemies/Boss_final/The-pale,-bearded-officer-in-the-white-military-uniform-flas.png" id="2_5v7xq"]
+[ext_resource type="Script" uid="uid://cljixhs4c2cgt" path="res://model/enemy_data.gd" id="2_ay52x"]
+[ext_resource type="Texture2D" uid="uid://dubjmaa8mxv37" path="res://assets/sprites/enemies/Boss_final/The-gray-haired-officer-in-the-white-military-uniform-stands.png" id="3_ay52x"]
+[ext_resource type="Texture2D" uid="uid://bsvdgkwd7vvy2" path="res://assets/sprites/enemies/Boss_final/The-undead-officer-in-a-white-military-uniform-raises-his-le.png" id="4_tqneo"]
+
+[sub_resource type="Resource" id="Resource_tqneo"]
+script = ExtResource("2_ay52x")
+metadata/_custom_type_script = "uid://cljixhs4c2cgt"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gp05e"]
+size = Vector2(90, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlkj5"]
+atlas = ExtResource("2_5v7xq")
+region = Rect2(239, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41rgi"]
+atlas = ExtResource("2_5v7xq")
+region = Rect2(478, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0i0g"]
+atlas = ExtResource("2_5v7xq")
+region = Rect2(717, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0yms"]
+atlas = ExtResource("2_5v7xq")
+region = Rect2(956, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ronci"]
+atlas = ExtResource("2_5v7xq")
+region = Rect2(1195, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6cju"]
+atlas = ExtResource("2_5v7xq")
+region = Rect2(1434, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4jcy"]
+atlas = ExtResource("3_ay52x")
+region = Rect2(0, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upvxy"]
+atlas = ExtResource("3_ay52x")
+region = Rect2(239, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86li0"]
+atlas = ExtResource("3_ay52x")
+region = Rect2(478, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhfht"]
+atlas = ExtResource("3_ay52x")
+region = Rect2(717, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg2lf"]
+atlas = ExtResource("3_ay52x")
+region = Rect2(956, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35lsj"]
+atlas = ExtResource("3_ay52x")
+region = Rect2(1195, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uptfr"]
+atlas = ExtResource("4_tqneo")
+region = Rect2(239, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s2vt"]
+atlas = ExtResource("4_tqneo")
+region = Rect2(478, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4bak"]
+atlas = ExtResource("4_tqneo")
+region = Rect2(717, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sb72"]
+atlas = ExtResource("4_tqneo")
+region = Rect2(956, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fomgh"]
+atlas = ExtResource("4_tqneo")
+region = Rect2(1195, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdw3s"]
+atlas = ExtResource("4_tqneo")
+region = Rect2(478, 0, 239, 239)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svfhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlkj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41rgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0i0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0yms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ronci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6cju")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4jcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upvxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86li0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhfht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg2lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35lsj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uptfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s2vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4bak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sb72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fomgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdw3s")
+}],
+"loop": false,
+"name": &"invocar",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4g1u2"]
+size = Vector2(90, 195)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nvn8s"]
+radius = 514.53
+
+[node name="Abuelo" type="CharacterBody2D" unique_id=843815930]
+collision_layer = 9
+script = ExtResource("1_u1s4w")
+data = SubResource("Resource_tqneo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1135900367]
+position = Vector2(-9, 5)
+shape = SubResource("RectangleShape2D_gp05e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1952478749]
+sprite_frames = SubResource("SpriteFrames_svfhh")
+animation = &"invocar"
+frame = 5
+frame_progress = 1.0
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=899926180]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1681756124]
+position = Vector2(-9, 5.5)
+shape = SubResource("RectangleShape2D_4g1u2")
+
+[node name="DetectionZone" type="Area2D" parent="." unique_id=1692394345]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone" unique_id=1521450847]
+position = Vector2(-14, -11)
+shape = SubResource("CircleShape2D_nvn8s")
+
+[node name="ParticulasGolpe" type="CPUParticles2D" parent="." unique_id=1714743927]
+
+[node name="ParticulasMuerte" type="CPUParticles2D" parent="." unique_id=685673976]

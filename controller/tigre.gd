@@ -11,7 +11,8 @@ const TIGRE_ID := "tigre_usado"
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var indicador_e: Sprite2D = $IndicadorE
-@onready var video: VideoStreamPlayer = $"../CanvasLayer/VideoStreamPlayer"
+var video: VideoStreamPlayer = null
+@export var en_castillo: bool = false
 
 var jugador_cerca: bool = false
 var en_cutscene: bool = false
@@ -22,6 +23,8 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 	indicador_e.visible = false
 	sprite.play("idle")
+	if not en_castillo:
+		video = get_node_or_null("../CanvasLayer/VideoStreamPlayer")
 
 
 func _process(_delta: float) -> void:
@@ -29,11 +32,17 @@ func _process(_delta: float) -> void:
 		return
 	if jugador_cerca and not en_cutscene:
 		if Input.is_action_just_pressed("interact"):
-			if GameManager.world_state.is_door_open(TIGRE_ID):
+			if en_castillo:
+				_devolver_a_tigre()
+			elif GameManager.world_state.is_door_open(TIGRE_ID):
 				_devolver_a_militar()
 			else:
 				_activar_cutscene()
-
+func _devolver_a_tigre() -> void:
+	en_cutscene = true
+	indicador_e.visible = false
+	GameManager.world_state.last_door_used = "door_tigre"
+	EventBus.room_transition_requested.emit("tigre/tigre_room", "door_tigre")
 
 func _activar_cutscene() -> void:
 	en_cutscene = true
@@ -60,7 +69,6 @@ func _devolver_a_militar() -> void:
 	indicador_e.visible = false
 	GameManager.world_state.last_door_used = "door_llave_militar"
 	EventBus.room_transition_requested.emit("CuartelesMilitares/Militar_room01", "door_llave_militar")
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

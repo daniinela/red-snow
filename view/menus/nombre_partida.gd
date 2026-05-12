@@ -26,9 +26,9 @@ func _on_confirmar() -> void:
 	if nombre == "":
 		nombre = "Partida " + str(slot)
 	SaveSystem.save_nuevo(slot, nombre)
-	GameManager.world_state.current_room = "Bosque/bosque02"
 	GameManager.nueva_partida_mode = true
 	GameManager.change_state(GameManager.GameState.PLAYING)
+	GameManager.world_state.current_room = "Bosque/bosque02"
 	get_tree().change_scene_to_file("res://view/world/game_world.tscn")
 
 func _on_cancelar() -> void:

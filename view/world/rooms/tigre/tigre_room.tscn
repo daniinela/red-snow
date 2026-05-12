@@ -4,19 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://cvv5v6vcjgflo" path="res://assets/sprites/environment/Gemini_Generated_Image_uu3sauuu3sauuu3s.png" id="2_c2wrc"]
 [ext_resource type="PackedScene" uid="uid://b3axmgst2xpgx" path="res://view/world/door/door.tscn" id="2_usf77"]
 [ext_resource type="Texture2D" uid="uid://swhl0gpp6njs" path="res://assets/sprites/environment/pisooooo.png" id="3_nijsa"]
-[ext_resource type="VideoStream" uid="uid://x4o4sgpiwbcr" path="res://assets/sprites/environment/videotigre.ogv" id="3_usf77"]
 [ext_resource type="PackedScene" uid="uid://bttnclmgvi55y" path="res://view/world/rooms/tigre/tigre.tscn" id="4_8kksu"]
 [ext_resource type="Texture2D" uid="uid://dsdedow5ix4s7" path="res://assets/sprites/environment/paredesSolas.png" id="4_nijsa"]
 [ext_resource type="Texture2D" uid="uid://duu6n7adiqtin" path="res://assets/sprites/environment/paredes.png" id="5_vqf05"]
 [ext_resource type="Texture2D" uid="uid://bhb1r4bsnjn0j" path="res://assets/sprites/environment/Gemini_Generated_Image_1w2bj31w2bj31w2b (1).png" id="6_fhwsp"]
+[ext_resource type="VideoStream" uid="uid://cuaihgje6qubp" path="res://assets/sprites/environment/0510.ogv" id="9_moofd"]
+[ext_resource type="PackedScene" uid="uid://itauy4h7vhnu" path="res://view/world/checkpoint.tscn" id="10_vqf05"]
+[ext_resource type="Texture2D" uid="uid://viwwd3upfa0w" path="res://assets/sprites/environment/pixel_art_small - 2026-05-11T133748.825.png" id="11_fhwsp"]
+[ext_resource type="Texture2D" uid="uid://blijklhy6oidc" path="res://assets/sprites/environment/pixel_art_small - 2026-05-11T133730.413.png" id="12_moofd"]
+[ext_resource type="Texture2D" uid="uid://ht4s8wrr1352" path="res://assets/sprites/environment/pixel_art_small - 2026-05-11T133745.352.png" id="13_0xgui"]
+[ext_resource type="Texture2D" uid="uid://coyogbohst7v5" path="res://assets/sprites/environment/pixel_art_small - 2026-05-11T133739.222.png" id="14_ppv6g"]
+[ext_resource type="Texture2D" uid="uid://duwin2rxu48b4" path="res://assets/sprites/environment/pixel_art_small - 2026-05-11T133718.452.png" id="15_3vhm8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqf05"]
 texture = ExtResource("3_nijsa")
 texture_region_size = Vector2i(1248, 367)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-616, -32, -632, -128, 664, -152, 672, -24)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-672, -24, -688, -96, 648, -104, 640, -24)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-350.27496, -116.7583, -355.83487, 0, 628.2709, -11.119812, 628.2709, -122.31824)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-367.59796, -68.92462, -358.40802, -9.189941, 643.29645, -4.5949707, 652.4864, -64.32959)
 
 [sub_resource type="TileSet" id="TileSet_fhwsp"]
 physics_layer_0/collision_layer = 1
@@ -25,7 +31,8 @@ sources/5 = SubResource("TileSetAtlasSource_vqf05")
 
 [node name="TigreRoom" type="Node2D" unique_id=992920024]
 
-[node name="RoomBase" parent="." unique_id=1779632340 instance=ExtResource("1_6wcdg")]
+[node name="RoomBase" parent="." unique_id=1779632340 groups=["room"] instance=ExtResource("1_6wcdg")]
+room_id = "tigre/tigre_room"
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1459226153]
 
@@ -39,13 +46,6 @@ texture = ExtResource("2_c2wrc")
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=930277249]
 tile_map_data = PackedByteArray(0, 0, 194, 0, 36, 0, 5, 0, 0, 0, 0, 0, 0, 0, 22, 0, 34, 0, 5, 0, 1, 0, 0, 0, 0, 0, 48, 0, 34, 0, 5, 0, 1, 0, 0, 0, 0, 0, 107, 0, 34, 0, 5, 0, 1, 0, 0, 0, 0, 0, 120, 0, 34, 0, 5, 0, 1, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_fhwsp")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=631659870]
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer" unique_id=831296060]
-offset_right = 40.0
-offset_bottom = 40.0
-stream = ExtResource("3_usf77")
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=2076134257]
 offset_top = -113.0
@@ -73,10 +73,47 @@ texture = ExtResource("6_fhwsp")
 position = Vector2(3223, 395)
 
 [node name="Door" parent="." unique_id=1763464115 instance=ExtResource("2_usf77")]
-position = Vector2(71, 386)
+position = Vector2(75, 361)
 door_id = "door_tigre"
 target_room = "CuartelesMilitares/Militar_room01"
 target_door_id = "door_llave_militar"
 
 [node name="SpawnPoint" type="Marker2D" parent="Door" unique_id=1301384859]
-position = Vector2(148, 12)
+position = Vector2(144, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=631659870]
+layer = 10
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer" unique_id=831296060]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("9_moofd")
+expand = true
+
+[node name="CheckPoint" parent="." unique_id=1920791638 instance=ExtResource("10_vqf05")]
+position = Vector2(2637, 398)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1263620299]
+position = Vector2(896, 326)
+texture = ExtResource("11_fhwsp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=240690570 groups=["room"]]
+position = Vector2(1219, 326)
+texture = ExtResource("12_moofd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1187418167]
+position = Vector2(1627, 326)
+texture = ExtResource("13_0xgui")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=640776746]
+position = Vector2(1950, 326)
+texture = ExtResource("14_ppv6g")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1226267072]
+position = Vector2(2288, 326)
+texture = ExtResource("15_3vhm8")

@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://bmwvs7qv2lpv0"]
+
+[ext_resource type="Texture2D" uid="uid://gk2aw573rwvl" path="res://assets/sprites/enemies/Boss_final/The-long-haired-swordsman-in-red-and-black-robes-and-the-pal.png" id="1_eg8wm"]
+[ext_resource type="Script" uid="uid://c33yuxbgdf8f0" path="res://controller/cinematica_final.gd" id="1_ojyye"]
+[ext_resource type="Texture2D" uid="uid://ulfpsni8mp0o" path="res://assets/sprites/enemies/Boss_final/The-long-haired-swordsman-in-red-and-black-attire-raises-his.png" id="1_vi8th"]
+[ext_resource type="Shader" uid="uid://cirmuihcc2gia" path="res://view/menus/cinematica_final.gdshader" id="2_ionhv"]
+[ext_resource type="Texture2D" uid="uid://18f3vs7yv2sg" path="res://assets/sprites/environment/letra E.png" id="3_h7sv4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnh2m"]
+shader = ExtResource("2_ionhv")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnh2m"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(0, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1k7o"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(239, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqmoc"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(478, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpvxp"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(717, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1kw1"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(956, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7oxm"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(1195, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yugpc"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(1434, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsml8"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(1673, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p2vo"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(1912, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75w7q"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(2151, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_telx3"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(2390, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idgh8"]
+atlas = ExtResource("1_vi8th")
+region = Rect2(2629, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi8th"]
+atlas = ExtResource("1_eg8wm")
+region = Rect2(0, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7sv4"]
+atlas = ExtResource("1_eg8wm")
+region = Rect2(239, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojyye"]
+atlas = ExtResource("1_eg8wm")
+region = Rect2(478, 0, 239, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ionhv"]
+atlas = ExtResource("1_eg8wm")
+region = Rect2(717, 0, 239, 239)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71sn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnh2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1k7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqmoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpvxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1kw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7oxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yugpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsml8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p2vo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75w7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_telx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idgh8")
+}],
+"loop": false,
+"name": &"decapitar",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi8th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7sv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojyye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ionhv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="CinematicaFinal" type="Node2D" unique_id=1681713387]
+script = ExtResource("1_ojyye")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1539306984]
+
+[node name="Animacion" type="AnimatedSprite2D" parent="CanvasLayer2" unique_id=449205833]
+modulate = Color(0.7372549, 0.7372549, 0.7372549, 1)
+material = SubResource("ShaderMaterial_vnh2m")
+position = Vector2(1014.99994, 614.00006)
+scale = Vector2(3.98091, 3.62317)
+sprite_frames = SubResource("SpriteFrames_71sn2")
+animation = &"decapitar"
+frame = 11
+frame_progress = 1.0
+
+[node name="IndicadorE" type="Sprite2D" parent="CanvasLayer2" unique_id=1276588980]
+position = Vector2(1177.5875, 362.2875)
+scale = Vector2(0.1865741, 0.18942311)
+texture = ExtResource("3_h7sv4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=687572780]
+layer = 10
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=498650274]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
