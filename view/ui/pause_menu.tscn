@@ -1,3 +1,36 @@
 [gd_scene format=3 uid="uid://1mvlbbypejeo"]
 
-[node name="PauseMenu" type="Node2D" unique_id=1104629018]
+[ext_resource type="Script" uid="uid://ciu0nqasm0cb8" path="res://controller/pause_menu.gd" id="1_10txy"]
+[ext_resource type="Texture2D" uid="uid://phsicfgq4nwp" path="res://assets/sprites/environment/pantalla.png" id="1_l2o2w"]
+[ext_resource type="Texture2D" uid="uid://blxtxfxjgkg17" path="res://assets/sprites/environment/continuar.png" id="2_t3aeu"]
+[ext_resource type="Texture2D" uid="uid://c8emvgecyt4pb" path="res://assets/sprites/environment/menuprincipal.png" id="3_10txy"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1161028773]
+script = ExtResource("1_10txy")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1906844066]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.000008
+offset_top = -21.000002
+offset_right = 185.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.93, 0.93)
+texture = ExtResource("1_l2o2w")
+
+[node name="BtnContinuar" type="TextureButton" parent="." unique_id=1383450363]
+offset_left = 760.0
+offset_top = 436.0
+offset_right = 1154.0
+offset_bottom = 529.0
+texture_normal = ExtResource("2_t3aeu")
+
+[node name="BtnMenuPrincipal" type="TextureButton" parent="." unique_id=1845258997]
+offset_left = 762.0
+offset_top = 559.0
+offset_right = 1156.0
+offset_bottom = 643.0
+texture_normal = ExtResource("3_10txy")

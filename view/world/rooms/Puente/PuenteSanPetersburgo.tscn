@@ -42,6 +42,10 @@ sources/0 = SubResource("TileSetAtlasSource_nkk82")
 [node name="PuenteSanPetersburgo" type="Node2D" unique_id=1313676286]
 
 [node name="RoomBase" parent="." unique_id=1779632340 instance=ExtResource("1_on6r5")]
+limite_izquierda = -1280
+limite_derecha = 5090
+limite_arriba = -300
+limite_abajo = 800
 room_id = "Puente/PuenteSanPetersburgo"
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=730035861]

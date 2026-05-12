@@ -29,9 +29,16 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/5 = SubResource("TileSetAtlasSource_vqf05")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_moofd"]
+size = Vector2(56, 758)
+
 [node name="TigreRoom" type="Node2D" unique_id=992920024]
 
 [node name="RoomBase" parent="." unique_id=1779632340 groups=["room"] instance=ExtResource("1_6wcdg")]
+limite_izquierda = -40
+limite_derecha = 3500
+limite_arriba = -100
+limite_abajo = 600
 room_id = "tigre/tigre_room"
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1459226153]
@@ -117,3 +124,10 @@ texture = ExtResource("14_ppv6g")
 [node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1226267072]
 position = Vector2(2288, 326)
 texture = ExtResource("15_3vhm8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=37942482]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=585564737]
+position = Vector2(3692, 219)
+shape = SubResource("RectangleShape2D_moofd")

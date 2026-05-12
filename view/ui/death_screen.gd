@@ -11,6 +11,13 @@ func _ready() -> void:
 	visible = false
 
 func _on_player_died() -> void:
+	# Espera a que termine la animación de muerte del jugador
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		var sprite = player.get_node_or_null("AnimatedSprite2D")
+		if sprite and sprite.sprite_frames.has_animation("die"):
+			sprite.play("die")
+			await sprite.animation_finished
 	visible = true
 	GameManager.change_state(GameManager.GameState.DEAD)
 	await get_tree().create_timer(2.0).timeout
