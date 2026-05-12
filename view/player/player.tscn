@@ -178,10 +178,6 @@ region = Rect2(855, 0, 171, 171)
 atlas = ExtResource("4_g7s7s")
 region = Rect2(1026, 0, 171, 171)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6gidl"]
-atlas = ExtResource("6_d08ru")
-region = Rect2(0, 0, 171, 171)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7lq70"]
 atlas = ExtResource("6_d08ru")
 region = Rect2(171, 0, 171, 171)
@@ -536,9 +532,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6gidl")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_7lq70")
 }, {
 "duration": 1.0,
@@ -598,9 +591,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u0dg3")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
-"speed": 12.0
+"speed": 10.0
 }, {
 "frames": [],
 "loop": true,
@@ -838,7 +831,9 @@ animation = &"Start"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1943735145]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_b162t")
-animation = &"attack"
+animation = &"die"
+frame = 19
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1185392230]
 position = Vector2(0, -36)
@@ -872,7 +867,7 @@ uv = PackedVector2Array(-177.5, -46, -119.5, -53, -67.5, -51, -9.5, -35, -14.5, 
 [node name="RaycastSombra" type="RayCast2D" parent="Player" unique_id=1152067948]
 position = Vector2(22, 13)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1912109582]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1912109582 groups=["camera"]]
 position = Vector2(0, -267)
 offset = Vector2(100, 30)
 zoom = Vector2(1.5, 1.5)

@@ -20,7 +20,6 @@ extends CharacterBody2D
 @onready var sprite_start: AnimatedSprite2D = $AnimatedSprite2D2
 
 const GRAVITY: float = 900.0
-const SOMBRA_Y_OFFSET := 5.0
 const SOMBRA_ESCALA_MAX := 1.0
 const SOMBRA_ESCALA_MIN := 0.3
 const SOMBRA_ALPHA_MAX := 0.5
@@ -39,6 +38,7 @@ var dash_cooldown: bool = false
 var was_on_floor: bool = false
 var ataque_habilitado: bool = true
 var dash_habilitado: bool = true
+
 
 func _ready() -> void:
 	EventBus.player_damaged.connect(_on_damaged)
@@ -71,12 +71,14 @@ func _ready() -> void:
 		sprite.visible = true
 		sprite.play("idle")
 
+
 func _on_start_finished() -> void:
 	if sprite_start.animation == "Start":
 		sprite_start.visible = false
 		sprite.visible = true
 		sprite.play("idle")
 		GameManager.nueva_partida_mode = false
+
 
 func _physics_process(delta: float) -> void:
 	if not GameManager.is_playing():
@@ -88,11 +90,11 @@ func _physics_process(delta: float) -> void:
 	_handle_jump()
 	_handle_dash()
 	_handle_attack()
-	_regen_stamina(delta)
 	move_and_slide()
 	_update_animation()
 	_handle_flask()
 	_update_sombra()
+
 
 func _update_sombra() -> void:
 	if not raycast_sombra.is_colliding():
@@ -108,11 +110,13 @@ func _update_sombra() -> void:
 	sombra.scale = Vector2(escala, 0.3)
 	sombra.color = Color(0, 0, 0, alpha)
 
+
 func _handle_flask() -> void:
 	if Input.is_action_just_pressed("use_flask") and data.flask_current > 0:
 		data.flask_current -= 1
 		data.heal(data.flask_heal_amount)
 		EventBus.player_flask_changed.emit(data.flask_current, data.flask_max)
+
 
 func _handle_attack() -> void:
 	if not ataque_habilitado:
@@ -122,6 +126,7 @@ func _handle_attack() -> void:
 		attack_hitbox.position.x = 80.0 if facing_right else -80.0
 		attack_hitbox.monitoring = false
 		sprite.play("attack")
+
 
 func _apply_gravity(delta: float) -> void:
 	if is_dashing:
@@ -137,6 +142,7 @@ func _apply_gravity(delta: float) -> void:
 			coyote_active = true
 			was_on_floor = true
 
+
 func _handle_movement() -> void:
 	if is_dashing or is_attacking or is_hurt:
 		return
@@ -147,6 +153,7 @@ func _handle_movement() -> void:
 		facing_right = dir > 0
 		sprite.flip_h = not facing_right
 
+
 func _handle_jump() -> void:
 	if is_dashing:
 		return
@@ -156,6 +163,7 @@ func _handle_jump() -> void:
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y *= 0.5
 
+
 func _handle_dash() -> void:
 	if not dash_habilitado:
 		return
@@ -163,18 +171,16 @@ func _handle_dash() -> void:
 		is_dashing = true
 		can_dash = false
 		dash_cooldown = true
-		data.stamina_current -= 25.0
 		velocity.x = data.dash_force * (1.0 if facing_right else -1.0) * 1.5
 		velocity.y = 0
 		set_collision_mask_value(4, false)
 		var anim_duration = sprite.sprite_frames.get_frame_count("dash") / sprite.sprite_frames.get_animation_speed("dash")
 		dash_timer.start(anim_duration)
+		# Resetea el cooldown rápido para poder spamear
+		await get_tree().create_timer(0.3).timeout
+		dash_cooldown = false
+		can_dash = true
 
-func _regen_stamina(delta: float) -> void:
-	if data.stamina_current < data.stamina_max:
-		data.stamina_current += data.stamina_regen * delta
-		data.stamina_current = min(data.stamina_current, data.stamina_max)
-		EventBus.player_stamina_changed.emit(data.stamina_current)
 
 func _update_animation() -> void:
 	if is_attacking:
@@ -192,6 +198,7 @@ func _update_animation() -> void:
 	else:
 		sprite.play("idle")
 
+
 func _on_animation_finished() -> void:
 	if sprite.animation == "attack":
 		is_attacking = false
@@ -202,6 +209,7 @@ func _on_animation_finished() -> void:
 		is_dashing = false
 		set_collision_mask_value(4, true)
 
+
 func _on_frame_changed() -> void:
 	if sprite.animation == "attack":
 		if sprite.frame == 3 or sprite.frame == 4:
@@ -209,6 +217,7 @@ func _on_frame_changed() -> void:
 			combat.attack(attack_hitbox)
 		else:
 			attack_hitbox.monitoring = false
+
 
 func _on_damaged(_amount: int, _hp_current: int) -> void:
 	if is_hurt:
@@ -221,19 +230,19 @@ func _on_damaged(_amount: int, _hp_current: int) -> void:
 	sprite.modulate = Color.WHITE * 3.0
 	particulas_sangre.restart()
 	particulas_sangre.emitting = true
-	# Desactiva colisión con enemigos durante el hurt
 	set_collision_mask_value(4, false)
 	await get_tree().create_timer(0.4).timeout
 	sprite.modulate = Color.WHITE
 	await get_tree().create_timer(0.6).timeout
 	is_hurt = false
-	# Reactiva colisión con enemigos
 	set_collision_mask_value(4, true)
+
 
 func _on_dash_timer_timeout() -> void:
 	velocity.x = 0
 	is_dashing = false
 	set_collision_mask_value(4, true)
+
 
 func _on_coyote_timer_timeout() -> void:
 	coyote_active = false
