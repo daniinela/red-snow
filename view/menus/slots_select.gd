@@ -1,10 +1,4 @@
 # view/menus/slots_select.gd
-# -------------------------------------------------------------
-# SLOTS SELECT — Pantalla de selección de slots de guardado
-# Muestra los 3 slots disponibles con su información.
-# Permite crear nueva partida, continuar o borrar.
-# Navegación con arriba/abajo y E para seleccionar.
-# -------------------------------------------------------------
 extends CanvasLayer
 
 @onready var slot1: Button = $VBoxContainer/HBoxContainer/Slot1
@@ -12,7 +6,8 @@ extends CanvasLayer
 @onready var slot3: Button = $VBoxContainer/HBoxContainer3/Slot3
 @onready var borrar1: Button = $VBoxContainer/HBoxContainer/Borrar1
 @onready var borrar2: Button = $VBoxContainer/HBoxContainer2/Borrar2
-@onready var borrar3: Button = $VBoxContainer/HBoxContainer3/Slot3
+@onready var borrar3: Button = $VBoxContainer/HBoxContainer3/Borrar3
+@onready var volver: Button = $VBoxContainer/Button
 
 var slots_visibles: Array = []
 var indice: int = 0
@@ -25,6 +20,7 @@ func _ready() -> void:
 	borrar1.pressed.connect(func(): _borrar_slot(1))
 	borrar2.pressed.connect(func(): _borrar_slot(2))
 	borrar3.pressed.connect(func(): _borrar_slot(3))
+	volver.pressed.connect(_on_volver)
 	_actualizar_foco()
 
 func _actualizar_slots() -> void:
@@ -38,6 +34,7 @@ func _actualizar_slots() -> void:
 		slots_visibles.append(slot2)
 	if slot3.visible:
 		slots_visibles.append(slot3)
+	slots_visibles.append(volver)
 	indice = 0
 
 func _actualizar_boton(boton: Button, borrar: Button, slot: int) -> void:
@@ -48,14 +45,12 @@ func _actualizar_boton(boton: Button, borrar: Button, slot: int) -> void:
 			borrar.visible = false
 		else:
 			boton.visible = true
-			boton.text = "PARTIDA " + str(slot)
+			boton.text = ""
 			borrar.visible = false
 	else:
 		if existe:
-			var info = SaveSystem.get_slot_info(slot)
-			var nombre = info.get("nombre", "Partida " + str(slot))
 			boton.visible = true
-			boton.text = nombre
+			boton.text = ""
 			borrar.visible = true
 		else:
 			boton.visible = false
@@ -99,3 +94,6 @@ func _cargar_partida(slot: int) -> void:
 func _borrar_slot(slot: int) -> void:
 	SaveSystem.delete_slot(slot)
 	_actualizar_slots()
+
+func _on_volver() -> void:
+	get_tree().change_scene_to_file("res://view/menus/main_menu.tscn")
