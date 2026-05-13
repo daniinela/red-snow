@@ -416,9 +416,9 @@ texture = ExtResource("5_y28ve")
 motion_scale = Vector2(0.7, 0.7)
 
 [node name="TextureRect3" type="TextureRect" parent="RoomBase/ParallaxBackground/ParallaxLayer3" unique_id=1548368118]
-offset_left = 642.0
+offset_left = -62.99994
 offset_top = 35.0
-offset_right = 21821.998
+offset_right = 28166.998
 offset_bottom = 7208.9995
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_inqcc")
@@ -442,7 +442,7 @@ texture = ExtResource("7_c4tq1")
 stretch_mode = 1
 
 [node name="TextureRect4" type="TextureRect" parent="RoomBase/ParallaxBackground/ParallaxLayer3" unique_id=220375728]
-offset_left = 1208.0
+offset_left = 494.0
 offset_top = 159.0
 offset_right = 5155.0
 offset_bottom = 837.0
