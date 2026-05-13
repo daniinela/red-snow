@@ -434,6 +434,9 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_y28ve")
 stretch_mode = 1
 
+[node name="Tigre" parent="." unique_id=280291317 instance=ExtResource("6_ekqpk")]
+position = Vector2(65, 457)
+
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=357294442]
 
 [node name="TextureRect" type="TextureRect" parent="Parallax2D2" unique_id=59928384]
@@ -444,9 +447,6 @@ offset_bottom = 569.0
 scale = Vector2(1.135, 1.135)
 texture = ExtResource("7_tspwj")
 stretch_mode = 1
-
-[node name="Tigre" parent="Parallax2D2" unique_id=280291317 instance=ExtResource("6_ekqpk")]
-position = Vector2(65, 457)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=292163827]
 layer = 10

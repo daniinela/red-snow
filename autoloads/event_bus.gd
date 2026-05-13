@@ -19,7 +19,7 @@ signal player_flask_changed(current: int, max_count: int)
 signal room_changed(room_id: String)
 signal door_opened(door_id: String)
 signal checkpoint_activado
-
+signal lore_requested(room_id: String)
 # -- COMBATE --
 signal enemy_damaged(enemy_id: String, amount: int)
 signal enemy_died(enemy_id: String)

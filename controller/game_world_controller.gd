@@ -73,6 +73,7 @@ func _on_transition_requested(target_room: String, door_id: String) -> void:
 
 
 func _load_room(path: String) -> void:
+	print("CARGANDO ROOM: ", path)
 	if current_room_node:
 		current_room_node.queue_free()
 		await get_tree().process_frame

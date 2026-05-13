@@ -15,6 +15,7 @@ extends Node2D
 var _posicionado: bool = false
 
 func _ready() -> void:
+	print("ROOM BASE READY: ", room_id)
 	await get_tree().process_frame
 	await get_tree().process_frame
 	if not _posicionado:
@@ -22,6 +23,13 @@ func _ready() -> void:
 		_posicionar_jugador()
 	await get_tree().process_frame
 	_setup_camera_limits()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	print("[RoomBase] room_id actual: ", room_id)
+	print("[RoomBase] visited_rooms: ", GameManager.world_state.visited_rooms)
+	if not GameManager.world_state.visited_rooms.has(room_id):
+		print("[RoomBase] Emitiendo lore para: ", room_id)
+		EventBus.lore_requested.emit(room_id)
 	GameManager.world_state.visit_room(room_id)
 
 

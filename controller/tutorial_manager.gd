@@ -10,6 +10,7 @@ signal tutorial_completo
 @onready var tecla_a: TextureRect = $TeclaA
 @onready var tecla_d: TextureRect = $TeclaD
 @onready var tecla_espacio: TextureRect = $TeclaEspacio
+@onready var video_player: VideoStreamPlayer = $VideoStreamPlayer
 
 var player: Node2D = null
 var paso: int = 0
@@ -17,6 +18,7 @@ var hecho_izq: bool = false
 var hecho_der: bool = false
 var hecho_salto: bool = false
 var intro_done: bool = false
+
 
 func _ready() -> void:
 	add_to_group("tutorial")
@@ -27,6 +29,7 @@ func _ready() -> void:
 			p.dash_habilitado = true
 		queue_free()
 		return
+
 	EventBus.checkpoint_activado.connect(_on_checkpoint_activado)
 	tecla_a.modulate.a = 0
 	tecla_d.modulate.a = 0
@@ -39,24 +42,43 @@ func _ready() -> void:
 	if player:
 		player.ataque_habilitado = false
 		player.dash_habilitado = false
+
+	#if GameManager.nueva_partida_mode:
+		#await _play_video()
+
 	_play_intro()
+
+
+func _play_video() -> void:
+	GameManager.change_state(GameManager.GameState.PAUSED)
+	video_player.visible = true
+	video_player.play()
+	await video_player.finished
+	video_player.visible = false
+	video_player.stop()
+	GameManager.change_state(GameManager.GameState.PLAYING)
+
 
 func _play_intro() -> void:
 	if not player:
 		intro_done = true
 		_fade_in([tecla_a, tecla_d, tecla_espacio])
 		return
-
 	if GameManager.nueva_partida_mode:
+		player.sprite_start.visible = true
+		player.sprite.visible = false
+		player.sprite_start.play("Start")
 		await player.sprite_start.animation_finished
 	intro_done = true
 	_fade_in([tecla_a, tecla_d, tecla_espacio])
+
 
 func _fade_in(nodos: Array) -> void:
 	var tw := create_tween()
 	for n in nodos:
 		n.visible = true
 		tw.parallel().tween_property(n, "modulate:a", 1.0, 0.6)
+
 
 func _fade_out(nodos: Array) -> void:
 	var tw := create_tween()
@@ -65,6 +87,7 @@ func _fade_out(nodos: Array) -> void:
 	await tw.finished
 	for n in nodos:
 		n.visible = false
+
 
 func _process(_delta: float) -> void:
 	if not intro_done:
@@ -87,6 +110,7 @@ func _process(_delta: float) -> void:
 				await get_tree().create_timer(0.3).timeout
 				tutorial_completo.emit()
 				queue_free()
+
 
 func _on_checkpoint_activado() -> void:
 	if paso == 1:

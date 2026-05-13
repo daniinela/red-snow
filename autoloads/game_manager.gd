@@ -28,5 +28,4 @@ func is_playing() -> bool:
 
 func change_room(target_room: String, door_id: String) -> void:
 	world_state.last_door_used = door_id
-	world_state.visit_room(target_room)
 	EventBus.room_transition_requested.emit(target_room, door_id)

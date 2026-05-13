@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://de2cwim7qwk2r" path="res://controller/game_world_controller.gd" id="1_e5ci7"]
 [ext_resource type="PackedScene" uid="uid://l4cov265p3sf" path="res://view/player/player.tscn" id="2_ujvtn"]
 [ext_resource type="PackedScene" uid="uid://1mvlbbypejeo" path="res://view/ui/pause_menu.tscn" id="3_ujvtn"]
+[ext_resource type="PackedScene" uid="uid://b6d47w6wrwhwc" path="res://view/ui/lore/LoreDisplay.tscn" id="4_c6awa"]
 
 [node name="GameWorld" type="Node" unique_id=699712449]
 script = ExtResource("1_e5ci7")
@@ -23,3 +24,5 @@ color = Color(0, 0, 0, 1)
 position = Vector2(70, 248)
 
 [node name="PauseMenu" parent="." unique_id=1161028773 instance=ExtResource("3_ujvtn")]
+
+[node name="LoreDisplay" parent="." unique_id=456247950 instance=ExtResource("4_c6awa")]

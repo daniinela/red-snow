@@ -1,9 +1,21 @@
 [gd_scene format=3 uid="uid://0fnxjvx872s4"]
 
 [ext_resource type="Script" uid="uid://d2d4qc3p7c60a" path="res://view/menus/main_menu.gd" id="1_rv1ed"]
+[ext_resource type="VideoStream" uid="uid://cwcp73aq5uq71" path="res://assets/sprites/environment/DimitriNieve.ogv" id="2_5pytf"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=782525347]
 script = ExtResource("1_rv1ed")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=581210629]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_5pytf")
+autoplay = true
+expand = true
+loop = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1046323667]
 anchors_preset = 8
@@ -11,10 +23,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -66.5
-offset_top = -46.5
-offset_right = 66.5
-offset_bottom = 46.5
+offset_left = -524.0
+offset_top = 160.0
+offset_right = -391.0
+offset_bottom = 288.0
 grow_horizontal = 2
 grow_vertical = 2
 

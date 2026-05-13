@@ -31,4 +31,4 @@ func _respawn() -> void:
 		SaveSystem.apply_save_to_player(data)
 	GameManager.change_state(GameManager.GameState.PLAYING)
 	visible = false
-	get_tree().change_scene_to_file("res://view/world/game_world.tscn")
+	get_tree().change_scene_to_file.call_deferred("res://view/world/game_world.tscn")

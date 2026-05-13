@@ -4,12 +4,14 @@ extends CanvasLayer
 @onready var continuar: Button = $VBoxContainer/Continuar
 @onready var salir: Button = $VBoxContainer/Salir
 
+@onready var video_bg: VideoStreamPlayer = $VideoStreamPlayer
+
 func _ready() -> void:
+	video_bg.play()
 	nueva_partida.pressed.connect(_on_nueva_partida)
 	continuar.pressed.connect(_on_continuar)
 	salir.pressed.connect(_on_salir)
 	GameManager.change_state(GameManager.GameState.MENU)
-	# Oculta continuar si no hay ninguna partida guardada
 	var hay_partida = SaveSystem.slot_exists(1) or SaveSystem.slot_exists(2) or SaveSystem.slot_exists(3)
 	continuar.visible = hay_partida
 

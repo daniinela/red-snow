@@ -14,10 +14,10 @@ var combo_count: int = 0
 var combo_timer: float = 0.0
 const COMBO_WINDOW: float = 0.6
 
-var sonido_acierto: AudioStreamPlayer2D  # 👈 agregado
-var sonido_fallo: AudioStreamPlayer2D    # 👈 agregado
+var sonido_acierto: AudioStreamPlayer2D  
+var sonido_fallo: AudioStreamPlayer2D    
 
-func _ready() -> void:  # 👈 agregado
+func _ready() -> void:  
 	sonido_acierto = get_parent().get_node_or_null("SonidoGolpeAcierto")
 	sonido_fallo = get_parent().get_node_or_null("SonidoGolpeFallo")
 	print("Acierto: ", sonido_acierto)
@@ -37,7 +37,7 @@ func attack(hitbox: Area2D) -> void:
 	combo_timer = COMBO_WINDOW
 	hitbox.monitoring = true
 	if sonido_fallo:
-		sonido_fallo.play()  # 👈 agregado
+		sonido_fallo.play()  
 	await get_tree().create_timer(data.attack_cooldown).timeout
 	hitbox.monitoring = false
 	can_attack = true
@@ -47,6 +47,6 @@ func on_hit(body: Node2D) -> void:
 		body.take_damage(data.attack_damage)
 		EventBus.enemy_damaged.emit(body.name, data.attack_damage)
 		if sonido_fallo:
-			sonido_fallo.stop()    # 👈 agregado
+			sonido_fallo.stop()   
 		if sonido_acierto:
-			sonido_acierto.play()  # 👈 agregado
+			sonido_acierto.play() 

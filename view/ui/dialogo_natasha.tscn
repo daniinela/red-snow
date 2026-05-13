@@ -66,6 +66,7 @@ theme_override_font_sizes/font_size = 70
 text = "Ya sé suficiente."
 
 [node name="BotonContinuar" type="Button" parent="Panel" unique_id=381437778]
+visible = false
 layout_mode = 0
 offset_left = 1668.75
 offset_top = 268.75

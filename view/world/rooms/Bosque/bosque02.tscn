@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://su6lbrv2b702" path="res://assets/sprites/environment/letra espacio.png" id="13_txjb3"]
 [ext_resource type="PackedScene" uid="uid://b1toqs5her2y" path="res://view/enemies/boss1.tscn" id="14_kpmme"]
 [ext_resource type="Texture2D" uid="uid://dwfkcbj4wqqpl" path="res://assets/sprites/environment/plantas.png" id="15_jtv1d"]
+[ext_resource type="VideoStream" uid="uid://cp4b2dtqqc263" path="res://assets/sprites/environment/Red-Snow-Introok.ogv" id="16_h8ela"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rty8h"]
 texture = ExtResource("7_m8tni")
@@ -133,6 +134,16 @@ offset_bottom = 538.0
 scale = Vector2(0.565, 0.565)
 texture = ExtResource("13_txjb3")
 metadata/_edit_use_anchors_ = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer" unique_id=1538747601]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("16_h8ela")
+expand = true
 
 [node name="Boss1_tscn" parent="." unique_id=1748306081 instance=ExtResource("14_kpmme")]
 position = Vector2(4111, -83)
