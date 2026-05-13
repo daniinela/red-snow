@@ -453,9 +453,9 @@ stretch_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="RoomBase/ParallaxBackground/ParallaxLayer4" unique_id=59928384]
 offset_left = 1.0
-offset_top = -64.0
+offset_top = -61.0
 offset_right = 4518.1807
-offset_bottom = 536.0
+offset_bottom = 539.0
 scale = Vector2(1.135, 1.135)
 texture = ExtResource("7_tspwj")
 stretch_mode = 1
