@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dyby47hqrkvii"
+path="res://.godot/imported/dragon-studio-footsteps-in-snow-335506 (1).mp3-11beebd841aa6d0e0b36b88d452a376b.mp3str"
+
+[deps]
+
+source_file="res://musica/Caminar_Sobre_Nieve/dragon-studio-footsteps-in-snow-335506 (1).mp3"
+dest_files=["res://.godot/imported/dragon-studio-footsteps-in-snow-335506 (1).mp3-11beebd841aa6d0e0b36b88d452a376b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -20,14 +20,19 @@
 texture = ExtResource("7_m8tni")
 texture_region_size = Vector2i(522, 183)
 0:0/0 = 0
+0:0/0/custom_data_0 = "Nieve"
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-273.04333, -18.830597, -269.9049, -53.353302, 257.35117, -53.353302, 257.35117, -12.553741)
+1:0/0/custom_data_0 = "Nieve"
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-246.24701, 24.80185, -244.47545, -15.944061, 258.64792, -23.030289, 265.73416, 24.80185)
+2:0/0/custom_data_0 = "Nieve"
 
 [sub_resource type="TileSet" id="TileSet_d5vtc"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
+custom_data_layer_0/name = "Superficie"
+custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_rty8h")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtv1d"]

@@ -14,6 +14,15 @@
 [ext_resource type="Texture2D" uid="uid://wn430k3v4xts" path="res://assets/sprites/player/jump2.png" id="7_fn2lk"]
 [ext_resource type="Texture2D" uid="uid://dlvrf4u8bdluw" path="res://assets/sprites/player/parry.png" id="8_ydlf1"]
 [ext_resource type="Texture2D" uid="uid://cjncfcrt8k538" path="res://assets/sprites/player/running.png" id="9_g7s7s"]
+[ext_resource type="AudioStream" uid="uid://dg3po7m1p5nh6" path="res://musica/Sonidos_Espada/dragon-studio-sword-breaking-sound-effect-393840.mp3" id="15_tdogh"]
+[ext_resource type="AudioStream" uid="uid://dx7yl1rg3bjop" path="res://musica/Sonidos_Espada/dragon-studio-sword-slice-393847.mp3" id="16_2ohwv"]
+[ext_resource type="AudioStream" uid="uid://cfgplhlitrt7s" path="res://musica/Caminar_Sobre_Nieve/freesound_community-footsteps-in-thin-snow-46199 (1).mp3" id="17_ck3dk"]
+[ext_resource type="AudioStream" uid="uid://cjfwt4dxt3ffm" path="res://musica/Camina/freesound_community-loud-footsteps-62038.mp3" id="18_qr4j3"]
+[ext_resource type="AudioStream" uid="uid://djptmy4pfuoax" path="res://musica/mixkit-running-through-the-forest-1232.wav" id="19_v5jyv"]
+[ext_resource type="AudioStream" uid="uid://bvmdx1xogi88n" path="res://musica/160604__mallement__jump-landing-in-snow02.wav" id="20_j1u3g"]
+[ext_resource type="AudioStream" uid="uid://cf71bik0vc7be" path="res://musica/stepir44-hurt-sound-435314.mp3" id="21_n51wc"]
+[ext_resource type="AudioStream" uid="uid://bje363173qg1q" path="res://musica/universfield-falling-game-character-352287.mp3" id="22_b162t"]
+[ext_resource type="AudioStream" uid="uid://bdqbijx6gu6hs" path="res://musica/scratchonix-air-blow-380645.mp3" id="23_cljp8"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ydlf1"]
 particle_flag_disable_z = true
@@ -871,6 +880,39 @@ position = Vector2(22, 13)
 position = Vector2(0, -267)
 offset = Vector2(100, 30)
 zoom = Vector2(1.5, 1.5)
+
+[node name="SonidoGolpeAcierto" type="AudioStreamPlayer2D" parent="Player" unique_id=462060370]
+stream = ExtResource("15_tdogh")
+volume_db = 24.0
+
+[node name="SonidoGolpeFallo" type="AudioStreamPlayer2D" parent="Player" unique_id=1796432398]
+stream = ExtResource("16_2ohwv")
+volume_db = 24.0
+
+[node name="SonidoPasoNieve" type="AudioStreamPlayer2D" parent="Player" unique_id=312390706]
+stream = ExtResource("17_ck3dk")
+
+[node name="SonidoPasoNormal" type="AudioStreamPlayer2D" parent="Player" unique_id=36400692]
+stream = ExtResource("18_qr4j3")
+
+[node name="Correr" type="AudioStreamPlayer2D" parent="Player" unique_id=569228209]
+stream = ExtResource("19_v5jyv")
+
+[node name="Salto" type="AudioStreamPlayer2D" parent="Player" unique_id=2126024262]
+stream = ExtResource("20_j1u3g")
+volume_db = 23.672
+
+[node name="RecibeDaño" type="AudioStreamPlayer2D" parent="Player" unique_id=836694567]
+stream = ExtResource("21_n51wc")
+
+[node name="Muere" type="AudioStreamPlayer2D" parent="Player" unique_id=1159702247]
+stream = ExtResource("22_b162t")
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="Player" unique_id=1124015380]
+stream = ExtResource("23_cljp8")
+volume_db = 14.358
+
+[node name="Timer" type="Timer" parent="Player" unique_id=1630729855]
 
 [connection signal="timeout" from="Player/DashTimer" to="Player" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="Player/CoyoteTimer" to="Player" method="_on_coyote_timer_timeout"]
