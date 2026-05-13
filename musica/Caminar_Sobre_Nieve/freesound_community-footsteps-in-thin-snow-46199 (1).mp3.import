@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfgplhlitrt7s"
+path="res://.godot/imported/freesound_community-footsteps-in-thin-snow-46199 (1).mp3-cee62629c68717e4f5843267bb24e61a.mp3str"
+
+[deps]
+
+source_file="res://musica/Caminar_Sobre_Nieve/freesound_community-footsteps-in-thin-snow-46199 (1).mp3"
+dest_files=["res://.godot/imported/freesound_community-footsteps-in-thin-snow-46199 (1).mp3-cee62629c68717e4f5843267bb24e61a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

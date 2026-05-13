@@ -18,6 +18,14 @@ extends CharacterBody2D
 @onready var sombra: Polygon2D = $Sombra
 @onready var raycast_sombra: RayCast2D = $RaycastSombra
 @onready var sprite_start: AnimatedSprite2D = $AnimatedSprite2D2
+@onready var sonido_paso_normal: AudioStreamPlayer2D = $SonidoPasoNormal
+@onready var sonido_paso_nieve: AudioStreamPlayer2D = $SonidoPasoNieve
+@onready var correr: AudioStreamPlayer2D = $Correr
+@onready var salto: AudioStreamPlayer2D = $Salto
+@onready var recibe_daño: AudioStreamPlayer2D = $RecibeDaño
+@onready var muere: AudioStreamPlayer2D = $Muere
+@onready var dash_sonido: AudioStreamPlayer2D = $Dash
+@onready var timer_pasos: Timer = $Timer
 
 const GRAVITY: float = 900.0
 const SOMBRA_ESCALA_MAX := 1.0
@@ -42,6 +50,7 @@ var dash_habilitado: bool = true
 
 func _ready() -> void:
 	EventBus.player_damaged.connect(_on_damaged)
+	EventBus.player_died.connect(_on_player_died)
 	attack_hitbox.body_entered.connect(combat.on_hit)
 	sprite.animation_finished.connect(_on_animation_finished)
 	sprite.frame_changed.connect(_on_frame_changed)
@@ -57,6 +66,7 @@ func _ready() -> void:
 		Vector2(-25, 154)
 	])
 	sprite_start.animation_finished.connect(_on_start_finished)
+	timer_pasos.timeout.connect(_on_timer_pasos_timeout)
 	if GameManager.nueva_partida_mode:
 		sprite.visible = false
 		sprite_start.visible = true
@@ -94,6 +104,48 @@ func _physics_process(delta: float) -> void:
 	_update_animation()
 	_handle_flask()
 	_update_sombra()
+	_handle_pasos()
+
+
+func _get_superficie() -> String:
+	var room = get_tree().get_first_node_in_group("room")
+	if room and room.get("superficie"):
+		return room.superficie
+	return "normal"
+
+
+func _handle_pasos() -> void:
+	var corriendo = is_on_floor() and abs(velocity.x) > 10 and Input.is_action_pressed("run") and not is_dashing and not is_hurt
+	var caminando = is_on_floor() and abs(velocity.x) > 10 and not Input.is_action_pressed("run") and not is_dashing and not is_hurt
+
+	if corriendo:
+		timer_pasos.stop()
+		sonido_paso_normal.stop()
+		sonido_paso_nieve.stop()
+		if not correr.playing:
+			correr.play(0.57)
+	elif caminando:
+		correr.stop()
+		if timer_pasos.is_stopped():
+			timer_pasos.start()
+			_on_timer_pasos_timeout()
+	else:
+		timer_pasos.stop()
+		sonido_paso_normal.stop()
+		sonido_paso_nieve.stop()
+		correr.stop()
+
+
+func _on_timer_pasos_timeout() -> void:
+	var superficie = _get_superficie()
+	if superficie == "Nieve":
+		sonido_paso_nieve.play(0.57)
+	else:
+		sonido_paso_normal.play(0.57)
+
+
+func _on_player_died() -> void:
+	muere.play()
 
 
 func _update_sombra() -> void:
@@ -160,6 +212,8 @@ func _handle_jump() -> void:
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_active):
 		velocity.y = data.jump_force
 		coyote_active = false
+		if _get_superficie() == "Nieve":  # 👈 cambiar
+			salto.play()
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y *= 0.5
 
@@ -174,9 +228,9 @@ func _handle_dash() -> void:
 		velocity.x = data.dash_force * (1.0 if facing_right else -1.0) * 1.5
 		velocity.y = 0
 		set_collision_mask_value(4, false)
+		dash_sonido.play()
 		var anim_duration = sprite.sprite_frames.get_frame_count("dash") / sprite.sprite_frames.get_animation_speed("dash")
 		dash_timer.start(anim_duration)
-		# Resetea el cooldown rápido para poder spamear
 		await get_tree().create_timer(0.3).timeout
 		dash_cooldown = false
 		can_dash = true
@@ -230,6 +284,7 @@ func _on_damaged(_amount: int, _hp_current: int) -> void:
 	sprite.modulate = Color.WHITE * 3.0
 	particulas_sangre.restart()
 	particulas_sangre.emitting = true
+	recibe_daño.play()
 	set_collision_mask_value(4, false)
 	await get_tree().create_timer(0.4).timeout
 	sprite.modulate = Color.WHITE
