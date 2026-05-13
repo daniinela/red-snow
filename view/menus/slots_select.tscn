@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://4h7lxnvcvnvi" path="res://assets/sprites/environment/partida1.png" id="2_jv5sb"]
 [ext_resource type="Texture2D" uid="uid://rxl13vhg0o0n" path="res://assets/sprites/environment/borrar.png" id="3_y8hl7"]
 [ext_resource type="Texture2D" uid="uid://dssi5mpky3sdo" path="res://assets/sprites/environment/partida2.png" id="4_kwms6"]
+[ext_resource type="Texture2D" uid="uid://dgofxsupwpjui" path="res://assets/sprites/environment/partida3.png" id="5_1jhel"]
+[ext_resource type="Texture2D" uid="uid://b3w21hy63is8l" path="res://assets/sprites/environment/elegiree.png" id="6_7da2q"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y8hl7"]
 texture = ExtResource("2_jv5sb")
@@ -14,17 +16,34 @@ texture = ExtResource("3_y8hl7")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ct130"]
 texture = ExtResource("4_kwms6")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1sher"]
+texture = ExtResource("3_y8hl7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lv2a5"]
+texture = ExtResource("5_1jhel")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4xyhi"]
+texture = ExtResource("3_y8hl7")
+
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1566567488]
 script = ExtResource("1_qcmr6")
 
 [node name="Label" type="Label" parent="." unique_id=898775472]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "SELECCIONAR PARTIDA"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1161438972]
-offset_right = 59.0
-offset_bottom = 101.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = -50.5
+offset_right = 306.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2137761003]
 layout_mode = 2
@@ -47,6 +66,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_ct130")
 
 [node name="Borrar2" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=676286675]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_1sher")
 text = "Borrar"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=1708674499]
@@ -54,7 +74,21 @@ layout_mode = 2
 
 [node name="Slot3" type="Button" parent="VBoxContainer/HBoxContainer3" unique_id=1932424746]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_lv2a5")
 
 [node name="Borrar3" type="Button" parent="VBoxContainer/HBoxContainer3" unique_id=198502878]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_4xyhi")
 text = "Borrar"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2070813250]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -15.0
+offset_right = 112.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_7da2q")

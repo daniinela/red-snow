@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dnaffftbbfws2"]
+
+[ext_resource type="Script" uid="uid://boytsi2ytsatj" path="res://controller/puerta_llave.gd" id="1_o8763"]
+[ext_resource type="Texture2D" uid="uid://m0uv45bd0iti" path="res://assets/sprites/environment/puerta.png" id="2_f1jw2"]
+[ext_resource type="Texture2D" uid="uid://18f3vs7yv2sg" path="res://assets/sprites/environment/letra E.png" id="3_k1b81"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1jw2"]
+size = Vector2(358, 456)
+
+[node name="PuertaLlave" type="Area2D" unique_id=944455722]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_o8763")
+target_room = "tigre/tigre_room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1545436929]
+position = Vector2(-2, 34)
+shape = SubResource("RectangleShape2D_f1jw2")
+
+[node name="SpritePuerta" type="Sprite2D" parent="." unique_id=193100444]
+position = Vector2(-10, 39)
+scale = Vector2(0.765625, 0.76607144)
+texture = ExtResource("2_f1jw2")
+
+[node name="IndicadorE" type="Sprite2D" parent="." unique_id=1794104801]
+position = Vector2(-3.637979e-12, -245.99997)
+scale = Vector2(0.14983165, 0.15750916)
+texture = ExtResource("3_k1b81")
